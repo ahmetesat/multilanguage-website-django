@@ -1,0 +1,49 @@
+.publicationHeadLine h2 {
+    font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+}
+
+.publicationInfo th {
+    font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: black;
+}
+
+.publicationInfo td {
+    font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
+    font-style: normal;
+    color: black;
+}
+
+.table-borderless td,
+.table-borderless th {
+    border: 0;
+}
+
+
+
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 142px;
+}
+.site-footer {
+  background: orange;
+}

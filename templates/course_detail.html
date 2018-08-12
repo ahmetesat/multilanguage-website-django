@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="container">
+        {% for academic_detail in academic_info_detail %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="publicationDetail">
+                        <div class="publicationHeadLine">
+                            <h2>{{ academic_detail.name }}{% if academic_detail.course.course_code %}
+                                - {{ academic_detail.course.course_code }}
+                            {% endif %}</h2>
+                        </div>
+                        <br>
+                        <div class="publicationInfo">
+                            <table class="table table-responsive table-borderless">
+                                <tbody>
+                                <tr>
+                                    <th>
+                                        Kurs Adı:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.name }}
+                                    </td>
+                                </tr>
+                                {% if academic_detail.course.course_code %}
+                                    <tr>
+                                        <th>
+                                            Kurs Kodu:
+                                        </th>
+                                        <td>
+                                            {{ academic_detail.course.course_code }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <th>
+                                        Sezon:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.year }} - {{ academic_detail.course_season }}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        Kurum Adı:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.university }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Departman:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.department }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Kurs Dili:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.course.course_language }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Açıklama:
+                                    </th>
+                                    <td>
+                                        {{ academic_detail.course_abstract|safe }}
+                                    </td>
+                                </tr>
+{#                                {% if academic_info_detail %}#}
+{##}
+{#                                {% endif %}#}
+{#                                <tr>#}
+{#                                    <th>#}
+{#                                        PDF:#}
+{#                                    </th>#}
+{#                                    <th>#}
+{#                                        <a href="media/{{ academic_info_detail.pdf }}">{{ academic_info_detail.course.pdf }}</a>#}
+{##}
+{#                                    </th>#}
+{#                                </tr>#}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

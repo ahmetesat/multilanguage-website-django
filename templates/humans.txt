@@ -1,0 +1,10 @@
+# humanstxt.org/
+
+# TEAM
+    Ahmet Esat Kara -- Developer -- @ahmet_esat_kara
+
+# THANKS
+
+# TECHNOLOGY COLOPHON
+    Django
+    HTML5

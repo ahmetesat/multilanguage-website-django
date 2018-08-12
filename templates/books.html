@@ -1,0 +1,115 @@
+{% extends base_publications %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <!-- Page Content -->
+    <div class="container">
+        <h3 class="my-4">Books</h3>
+        <div class="row">
+
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>
+                                Kitap Adı:
+                            </th>
+                            <th>
+                                Yayın Tarihi:
+                            </th>
+                            <th>
+                                İçerik Dili:
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for book in publication_info %}
+                        <tr>
+
+                            <td>
+                                <a href="{% url 'Book_Detail' book.book.pk book.name  %}">{{ book.name }}</a>
+                            </td>
+                            <td>
+                                {{ book.pub_year }}
+                            </td>
+                            <td>
+                                {{ book.book.book_language}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            {% comment %}{% for makale in article_info %}
+                <div class="col-12">
+                    <h3>{{ makale.name }}</h3>
+                    <table class="table table-sm table-responsive">
+                        <tbody>
+                        <tr>
+                            <th>
+                                Yazar(lar):
+                            </th>
+                            <td>
+                                {{ makale.author_names }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Yayıncı:
+                            </th>
+                            <td>
+                                {{ makale.publisher }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Yayın Tarihi:
+                            </th>
+                            <td>
+                                {{ makale.pub_year }}
+                            </td>
+                        </tr>
+                        <tr>
+                            {% if makale.pp %}
+                                <th>
+                                    Sayfalar:
+                                </th>
+                                <td>
+                                    {{ makale.pp }}
+                                </td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>
+                                İçerik Dili:
+                            </th>
+                            <td>
+                                {{ makale.content_language }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Açıklama:
+                            </th>
+                            <th>
+                                <p>ASASASSASssssssssss sssssssssssssssssssss sssssssssssssssssssssss sssssssssss ASASASSASssssssssss sssssssssssssssssssss sssssssssssssssssssssss sssssssssss</p>
+                                {#                                {{ makale.abstract }}#}
+                            </th>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            {% endfor %}
+{% endcomment %}        </div>
+
+    </div>
+
+
+{% endblock %}

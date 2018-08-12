@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" >
+
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+          </div>
+      </div>
+    </header>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <h1 class="my-4">Welcome </h1>
+
+
+
+      <!-- Portfolio Section -->
+      <h2> Heading</h2>
+
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+
+            <a href="{% url 'About' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">
+                <a href="{% url 'About' %}" >Hakkında</a>
+              </h4>
+            </div>
+
+        </div>
+       <div class="col-lg-4 col-sm-6 portfolio-item">
+
+            <a href="{% url 'Articles' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">
+                <a href="{% url 'Articles' %}" >Yayınlar</a>
+              </h4>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+
+            <a href="{% url 'Courses' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">
+                <a href="{% url 'Courses' %}" >Akademik Hayat</a>
+              </h4>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">
+                <a href="#" >Profesyonel İş Hayatı</a>
+              </h4>
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">
+                <a href="#" >İlgi Alanları</a>
+              </h4>
+            </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}

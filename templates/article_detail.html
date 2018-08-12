@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="container">
+        {% for publication_detail in publication_info_detail %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="publicationDetail">
+                        <div class="publicationHeadLine">
+                            <h2>{{ publication_detail.name }}</h2>
+                        </div>
+                        <br>
+                        <div class="publicationInfo">
+                            <table class="table table-responsive table-borderless">
+                                <tbody>
+                                <tr>
+                                    <th>
+                                        Yazar(lar):
+                                    </th>
+                                    {% for article_author in publication_detail.article.author_names.all %}
+                                        <td>
+                                            {{ article_author }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Yayıncı:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.article.publisher }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Yayın Tarihi:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.pub_year }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {% if publication_detail.pp %}
+                                        <th>
+                                            Sayfalar:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article.pp }}
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th>
+                                        İçerik Dili:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.article.article_language }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Açıklama:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.article_abstract|safe }}
+                                    </td>
+                                </tr>
+                                {% if publication_detail.article.pdf %}
+                                    <tr>
+                                        <th>
+                                            PDF:
+                                        </th>
+                                        <th>
+                                            <a href="media/{{ article_info_detail.pdf }}">{{ publication_detail.article.pdf }}</a>
+
+                                        </th>
+                                    </tr>
+                                {% endif %}
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

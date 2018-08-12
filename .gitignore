@@ -1,0 +1,12 @@
+.settings
+__pycache__
+*.py[cod]
+*.pyc
+
+media/
+*.sqlite3
+static/ckeditor
+*.mo
+
+# Common IDE's
+.idea

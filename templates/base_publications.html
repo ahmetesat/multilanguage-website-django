@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide">
+
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active"
+                 style="background-image: url('http://placehold.it/1900x1080')">
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div>
+                <ul>
+                    <li><a class="nav-link" href="{% url 'Articles' %}">{% trans "Yayınlar" %}</a></li>
+                    <li><a class="nav-link" href="{% url 'Books' %}">{% trans "Yayınlar" %}</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+    {{ block.super }}
+
+
+{% endblock %}
