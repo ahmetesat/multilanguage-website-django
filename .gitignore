@@ -4,8 +4,9 @@ __pycache__
 *.pyc
 
 media/
-*.sqlite3
 static/ckeditor
+migrations/
+*.sqlite3
 *.mo
 
 # Common IDE's

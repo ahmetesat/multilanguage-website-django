@@ -47,6 +47,10 @@ class BookTranslationAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Book_Translation, BookTranslationAdmin)
 
+class InternetPublicationAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Internet_Publication, InternetPublicationAdmin)
+
 class CourseAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Course, CourseAdmin)

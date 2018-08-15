@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="container">
+        {% for publication_detail in publication_info_detail %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="publicationDetail">
+                        <div class="publicationHeadLine">
+                            <h2>{{ publication_detail.name }}</h2>
+                        </div>
+                        <br>
+                        <div class="publicationInfo">
+                            <table class="table table-responsive table-borderless">
+                                <tbody>
+                                <tr>
+                                    <th>
+                                        Yazar(lar):
+                                    </th>
+                                    {% for article_author in publication_detail.author_names.all %}
+                                        <td>
+                                            {{ article_author }}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Tarih:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.internet_article_date | date:"M Y"}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {% if publication_detail.website_name %}
+
+                                        <th>
+                                        Website Adı:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.website_name }}
+                                    </td>
+                                    {% endif %}
+
+                                </tr>
+                                <tr>
+                                    {% if publication_detail.website_link %}
+                                        <th>
+                                            Website Link:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.website_link }}
+                                        </td>
+                                    {% endif %}
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        Açıklama:
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.article_content|safe }}
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

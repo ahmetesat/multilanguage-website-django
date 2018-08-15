@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 import datetime
 
+
 class All_Navbar_Sections(models.Model):  # Keeps the main navbar sections names
     name = models.CharField(max_length=25, unique=True, verbose_name="All Navbar Sections Name")
 
@@ -11,6 +12,7 @@ class All_Navbar_Sections(models.Model):  # Keeps the main navbar sections names
     class Meta:
         verbose_name = "All Navbar"
         verbose_name_plural = "All Navbars"
+
 
 class Authors(models.Model):
     name = models.CharField(max_length=25, default='Hacı Kara', unique=True, verbose_name="Author Name")
@@ -22,6 +24,7 @@ class Authors(models.Model):
         verbose_name = "Author"
         verbose_name_plural = "Authors"
 
+
 class Universities(models.Model):
     name = models.CharField(max_length=60, unique=True, verbose_name="University Name")
 
@@ -31,6 +34,7 @@ class Universities(models.Model):
     class Meta:
         verbose_name = "University"
         verbose_name_plural = "Universities"
+
 
 class Content_Language(models.Model):  # Exp. tr, en ..
     language = models.CharField(max_length=10, unique=True, verbose_name="Content Language")
@@ -42,10 +46,11 @@ class Content_Language(models.Model):  # Exp. tr, en ..
         verbose_name = "Content Language"
         verbose_name_plural = "Content Languages"
 
+
 class Publication_Type(models.Model):
     publication_type = models.CharField(max_length=30, blank=True,
-                                help_text="Ex: Book Chapter, Conferance Paper, ",
-                                verbose_name="Publication Type")  # Publication Type
+                                        help_text="Ex: Book Chapter, Conferance Paper, ",
+                                        verbose_name="Publication Type")  # Publication Type
 
     def __str__(self):
         return "%s" % (self.publication_type)  # In Admin Page see the name itself not as object
@@ -53,6 +58,7 @@ class Publication_Type(models.Model):
     class Meta:
         verbose_name = "Publication Type"
         verbose_name_plural = "Publication Type"
+
 
 class About(models.Model):
     name = models.CharField(max_length=10, default='Hacı Kara', unique=True)
@@ -66,6 +72,7 @@ class About(models.Model):
         verbose_name = "About"
         verbose_name_plural = "About"
 
+
 class About_Translation(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE)
     language = models.ForeignKey(Content_Language, on_delete=models.CASCADE)
@@ -77,6 +84,7 @@ class About_Translation(models.Model):
     class Meta:
         verbose_name = "About Detail"
         verbose_name_plural = "About Detail"
+
 
 class Article(models.Model):
     name_bsc = models.CharField(max_length=255, unique=True, verbose_name="Name")  # Name of the article
@@ -105,7 +113,8 @@ class Article(models.Model):
                            max_length=250)
 
     section = models.ForeignKey(All_Navbar_Sections,
-                                verbose_name="Navbar Section", on_delete=models.CASCADE)
+                                verbose_name="Navbar Section",
+                                on_delete=models.CASCADE)
 
     # tags =
 
@@ -116,7 +125,14 @@ class Article(models.Model):
         verbose_name = "Article"
         verbose_name_plural = "Articles"
 
+
 class Article_Translation(models.Model):
+    Article_Type = (
+        ('Dergi Makalesi', 'Dergi Makalesi'),
+        ('Journal Article', 'Journal Article'),
+        ('Kitap Bölümü', 'Kitap Bölümü'),
+        ('Book Chapter', 'Book Chapter')
+    )
     name = models.CharField(max_length=255,
                             verbose_name="Name")  # Name of the course
 
@@ -126,9 +142,11 @@ class Article_Translation(models.Model):
                                 help_text="Ex:20.05.2018, Spring 2018, 2018 ...",
                                 verbose_name="Published Year(Not Obligatory)")  # Publish Year
 
-    publication_type= models.CharField(max_length=30, blank=True,
-                                help_text="Ex: Book Chapter, Conferance Paper, ",
-                                verbose_name="Publication Type")  # Publication Type
+    publication_type = models.CharField(max_length=17,
+                                        help_text="EX: Journal Article",
+                                        verbose_name="Publication Type",
+                                        choices=Article_Type,
+                                        )  # Course language
 
     website_language = models.ForeignKey(Content_Language,
                                          help_text="Language shown in the website",
@@ -143,6 +161,7 @@ class Article_Translation(models.Model):
     class Meta:
         verbose_name = "Article Detail"
         verbose_name_plural = "Articles Details"
+
 
 class Book(models.Model):
     name_bsc = models.CharField(max_length=255, unique=True, verbose_name="Name")  # Name of the book
@@ -165,6 +184,10 @@ class Book(models.Model):
     publisher = models.CharField(max_length=255,
                                  help_text="Publisher Name")  # Publisher of the book
 
+    section = models.ForeignKey(All_Navbar_Sections,
+                                verbose_name="Navbar Section",
+                                on_delete=models.CASCADE)
+
     pdf = models.FileField(upload_to='pdf/',
                            help_text="Not Obligatory",
                            verbose_name="PDF(Not Obligatory)",
@@ -179,6 +202,7 @@ class Book(models.Model):
     class Meta:
         verbose_name = "Book"
         verbose_name_plural = "Books"
+
 
 class Book_Translation(models.Model):
     name = models.CharField(max_length=255,
@@ -195,9 +219,6 @@ class Book_Translation(models.Model):
                                          verbose_name="Website Language",
                                          on_delete=models.CASCADE)  # website language
 
-    section = models.ForeignKey(All_Navbar_Sections,
-                                verbose_name="Navbar Section", on_delete=models.CASCADE)
-
     book_abstract = RichTextField()
 
     def __str__(self):
@@ -207,55 +228,52 @@ class Book_Translation(models.Model):
         verbose_name = "Book Detail"
         verbose_name_plural = "Books Details"
 
+
 class Course(models.Model):
-    name_bsc = models.CharField(max_length=255,unique=True,
-                            verbose_name="Name")  # Name of the course
+    name_bsc = models.CharField(max_length=255, unique=True,
+                                verbose_name="Name")  # Name of the course
 
     course_code = models.CharField(max_length=10,
                                    blank=True,
-                                   verbose_name="Course Code")  #Course code
+                                   verbose_name="Course Code")  # Course code
 
-    # course_season = models.ForeignKey(Season,
-    #                                   help_text="EX: Autumn, Winter ...",
-    #                                   verbose_name="Course Language",
-    #                                   on_delete=models.CASCADE)  # Course language
+    course_language = models.ForeignKey(Content_Language,
+                                        help_text="Course Language",
+                                        verbose_name="Course Language",
+                                        on_delete=models.CASCADE)  # Course language
 
+    section = models.ForeignKey(All_Navbar_Sections,
+                                verbose_name="Navbar Section",
+                                on_delete=models.CASCADE)
 
-    course_language= models.ForeignKey(Content_Language,
-                                       help_text="Course Language",
-                                       verbose_name="Course Language",
-                                       on_delete=models.CASCADE)  # Course language
     # pdf = models.FileField(upload_to='pdf/',
     #                        help_text="Not Obligatory",
     #                        verbose_name="PDF(Not Obligatory)",
     #                        blank=True,
     #                        max_length=250)
 
-
     def __str__(self):
-        return "%s" % (self.name_bsc)         #In Admin Page see the name itself not as object
+        return "%s" % (self.name_bsc)  # In Admin Page see the name itself not as object
 
     class Meta:
         verbose_name = "Course"
         verbose_name_plural = "Courses"
 
+
 class Course_Translation(models.Model):
     Season_Choice = (
         ('Sonbahar', 'Sonbahar'),
-        ('Kış', 'Kış'),
-        ('İlkbahar', 'İlkbahar'),
-        ('Yaz', 'Yaz'),
         ('Autumn', 'Autumn'),
+        ('Kış', 'Kış'),
         ('Winter', 'Winter'),
+        ('İlkbahar', 'İlkbahar'),
         ('Spring', 'Spring'),
+        ('Yaz', 'Yaz'),
         ('Summer', 'Summer'),
     )
     name = models.CharField(max_length=255,
                             verbose_name="Name")  # Name of the course
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    # course_code = models.CharField(max_length=10,
-    #                                blank=True,
-    #                                verbose_name="Course Code")  # Course code
 
     university = models.ForeignKey(Universities,
                                    verbose_name="University",
@@ -276,20 +294,11 @@ class Course_Translation(models.Model):
     year = models.IntegerField(verbose_name="Course year",
                                help_text="EX: 2018")  # Course department or for who
 
-    # course_language = models.ForeignKey(Content_Language,
-    #                                     help_text="Course Language",
-    #                                     verbose_name="Course Language",
-    #                                     related_name="Course_Language_Content_Language",
-    #                                     on_delete=models.CASCADE)  # Course language
-
     website_language = models.ForeignKey(Content_Language,
                                          help_text="Language shown in the website",
                                          verbose_name="Website Language",
                                          related_name="Website_Language_Content_Language",
                                          on_delete=models.CASCADE)  # website language
-
-    section = models.ForeignKey(All_Navbar_Sections,
-                                verbose_name="Navbar Section", on_delete=models.CASCADE)
 
     course_abstract = RichTextField()
 
@@ -299,6 +308,7 @@ class Course_Translation(models.Model):
     class Meta:
         verbose_name = "Course Details"
         verbose_name_plural = "Courses Details"
+
 
 class Conference(models.Model):
     name = models.CharField(
@@ -315,10 +325,10 @@ class Conference(models.Model):
         db_index=True,
         unique=True,
         blank=True
-    )                                                       #Conference Link
-    date = models.DateField(default=datetime.date.today)    #Conference Date
+    )  # Conference Link
+    date = models.DateField(default=datetime.date.today)  # Conference Date
 
-    poster = models.ImageField(upload_to='img/', blank=True) #Conference Poster
+    poster = models.ImageField(upload_to='img/', blank=True)  # Conference Poster
 
     def __str__(self):
         return "%s" % (self.name)  # In Admin Page see the name itself not as object
@@ -326,6 +336,35 @@ class Conference(models.Model):
     class Meta:
         verbose_name = "Conference"
         verbose_name_plural = "Conferences"
+
+
+class Internet_Publication(models.Model):
+    name = models.CharField(max_length=255,
+                            help_text="Article Title",
+                            verbose_name="Article Title")  # Name of the Internet_Publications
+    author_names = models.ManyToManyField(Authors,
+                                          help_text="Choose An Author",
+                                          verbose_name="Author Names")  # Author names
+
+    internet_article_date = models.DateField()
+
+    website_name = models.CharField(max_length=255,
+                                    blank=True,
+                                    help_text="Website Name",
+                                    verbose_name="Website Name")
+    website_link = models.URLField(
+        max_length=128,
+        db_index=True,
+        unique=True,
+        blank=True,
+        help_text="Website Link",
+        verbose_name="Website Link"
+    )
+    article_content = RichTextField()
+
+    def __str__(self):
+        return "%s" % (self.name)  # In Admin Page see the name itself not as object
+
 
 class Supervised_Thesis(models.Model):
     name = models.CharField(
@@ -348,6 +387,7 @@ class Supervised_Thesis(models.Model):
     class Meta:
         verbose_name = "Supervised Thesis"
         verbose_name_plural = "Supervised Thesis"
+
 
 class Thesis_Jury_Membership(models.Model):
     DEGREE_CHOICES = (

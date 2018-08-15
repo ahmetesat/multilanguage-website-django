@@ -47,3 +47,24 @@ html, body {
 .site-footer {
   background: orange;
 }
+
+.citation-list a  {
+        font-weight: 600;
+    transition: all .3s ease 0s;
+    text-decoration: none;
+    color: #ff6548 !important;
+}
+
+.citation-lista, a:hover, a:active, a:focus {
+    outline: 0;
+    color: #00152d !important;
+}
+
+citation-list li {
+    transition: all .3s ease 0s;
+    color: #00152d;
+    display: block;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 1em;
+    padding: 1.5em;
+}

@@ -1,0 +1,21 @@
+{% extends base_publications %}
+
+{% block content %}
+    {{ block.super }}
+
+    <!-- Page Content -->
+    <div class="container">
+        <h3 class="my-4">Öğretim Deneimi</h3>
+        <div class="row">
+            {% for internet_pub in publication_info %}
+                <div class="col-12">
+                    <ul class="citation-list">
+                        <li class="publication-list-item"><a href="{% url 'internet_publication_detail' internet_pub.pk internet_pub.name  %}">{{ internet_pub.name }}</a> - {{ internet_pub.internet_article_date|date:"M Y" }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+{% endblock %}
