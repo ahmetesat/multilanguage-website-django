@@ -5,37 +5,32 @@
     <!-- Page Content -->
     <div class="container">
 
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">About
-        <small>Subheading</small>
-      </h1>
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Hakkında
+        </h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <!--<a href="index.html">Home</a>-->
-        </li>
-        <li class="breadcrumb-item active">About</li>
-      </ol>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Ana Sayfa</a>
+            </li>
+            <li class="breadcrumb-item active">Hakkında</li>
+        </ol>
 
-      <!-- Intro Content -->
-      <div class="row">
-        <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
-        </div>
-        <div class="col-lg-6">
-          <h2>About Modern Business</h2>
-{#          <p>{{ author_info.about_description}}</p>#}
+        <!-- Intro Content -->
+        <div class="row">
             {% for foo in author_info %}
-                <p>{{ foo.about.name }}</p>
-                <p>{{ foo.about.section }}</p>
-                <p>{{ foo.about_description }}</p>
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded mb-4" src="{{ foo.about.image.url }}" alt="About Picture">
+                </div>
+                <div class="col-lg-6">
+                    <h2>{{ foo.about.name }}</h2>
+                    <p>{{ foo.about_description | safe }}</p>
+                </div>
             {% endfor %}
-
         </div>
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
 
     </div>
     <!-- /.container -->
 
-    {% endblock %}
+{% endblock %}

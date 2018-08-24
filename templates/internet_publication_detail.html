@@ -18,29 +18,27 @@
                                     <th>
                                         Yazar(lar):
                                     </th>
-                                    {% for article_author in publication_detail.author_names.all %}
-                                        <td>
-                                            {{ article_author }}
-                                        </td>
-                                    {% endfor %}
+                                    <td>
+                                        {{ publication_detail.author_names.all |join:", " }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>
                                         Tarih:
                                     </th>
                                     <td>
-                                        {{ publication_detail.internet_article_date | date:"M Y"}}
+                                        {{ publication_detail.internet_article_date | date:"M Y" }}
                                     </td>
                                 </tr>
                                 <tr>
                                     {% if publication_detail.website_name %}
 
                                         <th>
-                                        Website Adı:
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.website_name }}
-                                    </td>
+                                            Website Adı:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.website_name }}
+                                        </td>
                                     {% endif %}
 
                                 </tr>
@@ -69,7 +67,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         {% endfor %}
     </div>

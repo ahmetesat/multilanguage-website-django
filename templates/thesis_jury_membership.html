@@ -1,8 +1,35 @@
 {% extends base_academic_life %}
-
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
+
+    <!-- Navbar Inside -->
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Courses' %}">
+                    <span>{% trans "Dersler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Conferences' %}">
+                    <span>{% trans "Conferences" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Supervised_Thesis' %}">
+                    <span>{% trans "Makale Danışmanlığı" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'Thesis_Jury_Membership' %}">
+                    <span>{% trans "Makale Jüri Üyeliği" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar Inside -->
 
     <!-- Page Content -->
     <div class="container">
@@ -27,7 +54,7 @@
                         </th>
                     </tr>
                     </thead>
-                    {% for academic in academic_life%}
+                    {% for academic in academic_life %}
                         <tbody>
                         <tr>
                             <td>
@@ -37,10 +64,10 @@
                                 {{ academic.name }}
                             </td>
                             <td>
-                                {{ academic.date}}
+                                {{ academic.date }}
                             </td>
                             <td>
-                                {{ academic.thesis_degree}}
+                                {{ academic.thesis_degree }}
                             </td>
                         </tr>
                         </tbody>

@@ -1,21 +1,57 @@
 {% extends base_publications %}
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
 
+    {#    <!-- Base Navbar Start -->#}
+    {#    <div class="container container-base-nav-bar">#}
+    {#        <ul class="base-template-nav-bar">#}
+    {#            <li><a class="base-navbar-section" href="{% url 'Articles' %}"><span>{% trans "Makaleler" %}</span></a></li>#}
+    {#            <li><a class="base-navbar-section" href="{% url 'Books' %}"><span>{% trans "Kitaplar" %}</span></a>#}
+    {#            </li>#}
+    {#            <li><a class="base-navbar-section current"#}
+    {#                   href="{% url 'internet_publications' %}"><span>{% trans "İnternet Yayınları" %}</span></a></li>#}
+    {#        </ul>#}
+    {#    </div>#}
+    {#    <!-- Base Navbar End -->#}
+
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Articles' %}">
+                    <span>{% trans "Makaleler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Books' %}">
+                    <span>{% trans "Kitaplar" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'internet_publications' %}">
+                    <span>{% trans "İnternet Yayınları" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">Öğretim Deneimi</h3>
+        <h3 class="my-4">İnternet Yayınları</h3>
         <div class="row">
-            {% for internet_pub in publication_info %}
-                <div class="col-12">
+            <div class="col-12">
                     <ul class="citation-list">
-                        <li class="publication-list-item"><a href="{% url 'internet_publication_detail' internet_pub.pk internet_pub.name  %}">{{ internet_pub.name }}</a> - {{ internet_pub.internet_article_date|date:"M Y" }}</li>
+                        {% for internet_pub in publication_info %}
+                        <li class="publication-list-item">
+                            <a href="{% url 'internet_publication_detail' internet_pub.pk internet_pub.name %}">
+                                {{ internet_pub.name }}
+                            </a>
+                            - {{ internet_pub.internet_article_date|date:"M Y" }}
+                        </li>
+                    {% endfor %}
                     </ul>
-                </div>
-            {% endfor %}
-
+            </div>
         </div>
-
     </div>
 {% endblock %}

@@ -18,12 +18,21 @@
                                     <th>
                                         Yazar(lar):
                                     </th>
-                                    {% for article_author in publication_detail.article.author_names.all %}
-                                        <td>
-                                            {{ article_author }}
-                                        </td>
-                                    {% endfor %}
+                                    <td>
+                                        {{ publication_detail.article.author_names.all | join:", " }}
+                                    </td>
                                 </tr>
+                                {% if publication_detail.article.journal_title %}
+                                    <tr>
+                                        <th>
+                                            Dergi:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article.journal_title }}
+                                        </td>
+                                    </tr>
+
+                                {% endif %}
                                 <tr>
                                     <th>
                                         Yayıncı:
@@ -37,19 +46,51 @@
                                         Yayın Tarihi:
                                     </th>
                                     <td>
-                                        {{ publication_detail.pub_year }}
+                                        {{ publication_detail.article.pub_year | date:"M Y" }}
                                     </td>
                                 </tr>
-                                <tr>
-                                    {% if publication_detail.pp %}
+                                {% if publication_detail.article.volume %}
+                                    <tr>
+                                        <th>
+                                            Cilt:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article.volume }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                                {% if publication_detail.article.issue %}
+                                    <tr>
+                                        <th>
+                                            Sayı:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article.issue }}
+                                        </td>
+                                    </tr>
+
+                                {% endif %}
+
+                                {% if publication_detail.pp %}
+                                    <tr>
                                         <th>
                                             Sayfalar:
                                         </th>
                                         <td>
                                             {{ publication_detail.article.pp }}
                                         </td>
-                                    {% endif %}
+                                    </tr>
+                                {% endif %}
+                                {% if publication_detail.page_count %}
+                                <tr>
+                                        <th>
+                                            Sayfa sayısı:
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article.page_count }}
+                                        </td>
                                 </tr>
+                                {% endif %}
                                 <tr>
                                     <th>
                                         İçerik Dili:
@@ -58,6 +99,17 @@
                                         {{ publication_detail.article.article_language }}
                                     </td>
                                 </tr>
+                                {% if publication_detail.article.pdf %}
+                                    <tr>
+                                        <th>
+                                            PDF:
+                                        </th>
+                                        <th>
+                                            <a href="{{ article_info_detail.pdf.url }}">{{ publication_detail.article.pdf }}</a>
+
+                                        </th>
+                                    </tr>
+                                {% endif %}
                                 <tr>
                                     <th>
                                         Açıklama:
@@ -66,18 +118,6 @@
                                         {{ publication_detail.article_abstract|safe }}
                                     </td>
                                 </tr>
-                                {% if publication_detail.article.pdf %}
-                                    <tr>
-                                        <th>
-                                            PDF:
-                                        </th>
-                                        <th>
-                                            <a href="media/{{ article_info_detail.pdf }}">{{ publication_detail.article.pdf }}</a>
-
-                                        </th>
-                                    </tr>
-                                {% endif %}
-
                                 </tbody>
 
                             </table>

@@ -48,9 +48,9 @@ def about_page(request):
             # a = Content_Language.objects.filter(language="tr")
             # author_info = About_Translation.objects.filter(language__in=a)
 
-            author_info = About_Translation.objects.filter(language__language=selected_language)
+            author_info = About_Translation.objects.filter(website_language__language=selected_language)
             if not author_info:
-                author_info = About_Translation.objects.filter(language__language="tr")
+                author_info = About_Translation.objects.filter(website_language__language="tr")
             return render(request, "about.html", {"author_info": author_info})
     except:
         pass
@@ -150,7 +150,7 @@ def internet_publications(request):
 
 def internet_publication_detail(request, pk=None, internet_pub_artic_name= None):
     if request.method == 'GET':
-        publication_info_detail = Internet_Publication.objects.all()
+        publication_info_detail = Internet_Publication.objects.filter(pk=pk)
 
         return render(request, "internet_publication_detail.html"
                       , {"publication_info_detail": publication_info_detail})
@@ -235,3 +235,20 @@ def thesis_jury_membership_page(request):
                        "academic_life": academic_life})
 # except:
 #     pass
+
+
+def research_interest_detail(request):
+
+    try:
+        selected_language = translation.get_language()  # Gets the current selected language
+
+        if request.method == 'GET':
+            research_interest = Research_Interest_Translation.objects.filter(website_language__language=selected_language)
+
+            if not research_interest:
+                pass
+
+            return render(request, "research_interests.html", {"research_interest": research_interest})
+
+    except:
+        pass

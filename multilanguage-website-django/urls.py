@@ -36,6 +36,7 @@ urlpatterns += i18n_patterns(
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_page, name="home"),
     url(r'^About/$', about_page, name="About"),
+
     url(r'^Publications/Articles$', article_page, name="Articles"),
     url(r'^Publications/Articles/Detail/(?P<pk>\d+)/(?P<article_name>[\w\s]+)/$', article_detail,
         name="Article_Detail"),
@@ -44,11 +45,13 @@ urlpatterns += i18n_patterns(
     url(r'^Publications/internet_publications$', internet_publications, name="internet_publications"),
     url(r'^Publications/internet_publications/detail/(?P<pk>\d+)/(?P<internet_pub_artic_name>[\w\s]+)/$',
         internet_publication_detail, name="internet_publication_detail"),
+
     url(r'^Academic/Courses$', course_page, name="Courses"),
     url(r'^Academic/Course/Detail/(?P<pk>\d+)/(?P<course_name>[\w\s]+)/$', course_detail, name="Course_Detail"),
     url(r'^Academic/Conferences$', conference_page, name="Conferences"),
     url(r'^Academic/Supervised_Thesis$', supervised_thesis_page, name="Supervised_Thesis"),
-    url(r'^Academic/Thesis_Jury_Membership$', thesis_jury_membership_page, name="Thesis_Jury_Membership")
+    url(r'^Academic/Thesis_Jury_Membership$', thesis_jury_membership_page, name="Thesis_Jury_Membership"),
+    url(r'^research_interests$', research_interest_detail, name="research_interest_detail")
 
 )
 

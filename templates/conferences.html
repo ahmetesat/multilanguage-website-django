@@ -1,31 +1,58 @@
 {% extends base_academic_life %}
-
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
+
+    <!-- Navbar Inside -->
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Courses' %}">
+                    <span>{% trans "Dersler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'Conferences' %}">
+                    <span>{% trans "Conferences" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Supervised_Thesis' %}">
+                    <span>{% trans "Makale Danışmanlığı" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Thesis_Jury_Membership' %}">
+                    <span>{% trans "Makale Jüri Üyeliği" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar Inside -->
 
     <!-- Page Content -->
     <div class="container">
         <h3 class="my-4">Konferans</h3>
         <div class="row">
             {% for konferans in academic_life %}
-
-
-
                 <div class="col-md-8">
-                    <h3>{{ konferans.name }}</h3>
-                    <p>{{ konferans.date }}</p>
-                    <p>{{ konferans.location }}</p>
+                    <ul>
+                        <li>
+                            <p>{{ konferans.name }}</p>
+                            <p>{{ konferans.participants.all |join:", " }} </p>
+                            <p>{{ konferans.location }}</p>
+                            <p>{{ konferans.date | date:"M Y" }}</p>
+                        </li>
+                    </ul>
                     {% if konferans.conference_link %}
-                    <a href="{{ konferans.conference_link }}">{{ konferans.conference_link }}</a>
+                        <ul>
+                            <li><a href="{{ konferans.conference_link }}">{{ konferans.conference_link }}</a>
+                            </li>
+                        </ul>
                     {% endif %}
                 </div>
-
-                <div class="col-md-4">
-                    {% if konferans.poster %}
-                        <img src="{{ MEDIA_URL }}{{ konferans.poster }}" alt={{ konferans.poster }}>
-                    {% endif %}
-                </div>
+                <br>
             {% endfor %}
 
         </div>

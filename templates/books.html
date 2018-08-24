@@ -1,48 +1,79 @@
 {% extends base_publications %}
-
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
+
+{#    <!-- Base Navbar Start -->#}
+{#    <div class="container container-base-nav-bar">#}
+{#        <ul class="base-template-nav-bar">#}
+{#            <li><a class="base-navbar-section" href="{% url 'Articles' %}"><span>{% trans "Makaleler" %}</span></a></li>#}
+{#            <li><a class="base-navbar-section current" href="{% url 'Books' %}"><span>{% trans "Kitaplar" %}</span></a>#}
+{#            </li>#}
+{#            <li><a class="base-navbar-section"#}
+{#                   href="{% url 'internet_publications' %}"><span>{% trans "İnternet Yayınları" %}</span></a></li>#}
+{#        </ul>#}
+{#    </div>#}
+{#    <!-- Base Navbar End -->#}
+
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Articles' %}">
+                    <span>{% trans "Makaleler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'Books' %}">
+                    <span>{% trans "Kitaplar" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'internet_publications' %}">
+                    <span>{% trans "İnternet Yayınları" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
         <h3 class="my-4">Books</h3>
         <div class="row">
 
-                <div class="col-12">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>
-                                Kitap Adı:
-                            </th>
-                            <th>
-                                Yayın Tarihi:
-                            </th>
-                            <th>
-                                İçerik Dili:
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for book in publication_info %}
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            Kitap Adı:
+                        </th>
+                        <th>
+                            Yayın Tarihi:
+                        </th>
+                        <th>
+                            İçerik Dili:
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for book in publication_info %}
                         <tr>
 
                             <td>
-                                <a href="{% url 'Book_Detail' book.book.pk book.name  %}">{{ book.name }}</a>
+                                <a href="{% url 'Book_Detail' book.book.pk book.name %}">{{ book.name }}</a>
                             </td>
                             <td>
-                                {{ book.pub_year }}
+                                {{ book.book.pub_year | date:"M Y" }}
                             </td>
                             <td>
-                                {{ book.book.book_language}}
+                                {{ book.book.book_language }}
                             </td>
                         </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
 
             {% comment %}{% for makale in article_info %}

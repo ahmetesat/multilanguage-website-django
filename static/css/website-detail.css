@@ -1,3 +1,11 @@
+/*Main Navbar icon style*/
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1);
+    background-color: #ff6548;
+}
+/*Main Navbar icon style*/
+
 .publicationHeadLine h2 {
     font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
     font-style: normal;
@@ -23,48 +31,82 @@
     border: 0;
 }
 
-
-
-
 * {
-  margin: 0;
-}
-html, body {
-  height: 100%;
-}
-.page-wrap {
-  min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -142px;
-}
-.page-wrap:after {
-  content: "";
-  display: block;
-}
-.site-footer, .page-wrap:after {
-  height: 142px;
-}
-.site-footer {
-  background: orange;
+    margin: 0;
 }
 
-.citation-list a  {
-        font-weight: 600;
+html, body {
+    height: 100%;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -142px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.site-footer, .page-wrap:after {
+    height: 142px;
+}
+
+.site-footer {
+    background: orange;
+}
+
+/*------------------Internet Publication------------------*/
+
+.citation-list a {
     transition: all .3s ease 0s;
     text-decoration: none;
     color: #ff6548 !important;
+    list-style-type: none;
 }
 
-.citation-lista, a:hover, a:active, a:focus {
-    outline: 0;
-    color: #00152d !important;
+.citation-list li{
+    list-style-type: none;
+    padding-bottom: 15px;
+}
+/*------------------Internet Publication------------------*/
+
+
+
+/*------------------INLINE NAVBAR------------------*/
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+-webkit-overflow-scrolling: touch;
 }
 
-citation-list li {
-    transition: all .3s ease 0s;
-    color: #00152d;
-    display: block;
-    background: rgba(255,255,255,0.5);
-    margin: 0 0 1em;
-    padding: 1.5em;
+.base-navbar-section {
+    display: inline-block;
+  }
+
+.scrolling-wrapper::-webkit-scrollbar{
+    display: none;
 }
+
+/*Defines the writing style*/
+.div-base-navbar-section a{
+    color: #000;
+    padding-right: 16px;
+    text-decoration: none;
+    float: left;
+    white-space: nowrap !important;
+}
+
+.div-base-navbar-section a.current span{
+    border-bottom: 3px #ff6548 solid;
+}
+
+.div-base-navbar-section a:hover span {
+    border-bottom: 3px #ff6548 solid;
+}
+
+/*------------------INLINE NAVBAR------------------*/

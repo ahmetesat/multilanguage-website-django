@@ -1,46 +1,75 @@
 {% extends base_academic_life %}
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
 
+    <!-- Navbar Inside -->
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'Courses' %}">
+                    <span>{% trans "Dersler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Conferences' %}">
+                    <span>{% trans "Conferences" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Supervised_Thesis' %}">
+                    <span>{% trans "Makale Danışmanlığı" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Thesis_Jury_Membership' %}">
+                    <span>{% trans "Makale Jüri Üyeliği" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar Inside -->
+
     <!-- Page Content -->
     <div class="container">
-    <h3 class="my-4">Öğretim Deneimi</h3>
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>
-                        Ders:
-                    </th>
-                    <th>
-                        Kurum Adı:
-                    </th>
-                    <th>
-                        Tarih:
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for kurs in academic_info %}
-                <tr>
-                    <td>
-                        <a href="{% url 'Course_Detail' kurs.course.pk kurs.name  %}">{{ kurs.name }}</a>
-                    </td>
-                    <td>
-                        {{ kurs.university}}
-                    </td>
-                    <td>
-                        {{ kurs.year }}  {{ kurs.course_season }}
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
+        <h3 class="my-4">Öğretim Deneimi</h3>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            Ders:
+                        </th>
+                        <th>
+                            Kurum Adı:
+                        </th>
+                        <th>
+                            Tarih:
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for kurs in academic_info %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'Course_Detail' kurs.course.pk kurs.name %}">{{ kurs.name }}</a>
+                            </td>
+                            <td>
+                                {{ kurs.university }}
+                            </td>
+                            <td>
+                                {{ kurs.year }} {{ kurs.course_season }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
 
-            </table>
+                </table>
+            </div>
+
         </div>
-
     </div>
 
 

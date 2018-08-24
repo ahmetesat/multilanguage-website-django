@@ -67,6 +67,17 @@
                                         {{ academic_detail.course.course_language }}
                                     </td>
                                 </tr>
+                                {% if academic_info_detail %}
+                                    <tr>
+                                        <th>
+                                            PDF:
+                                        </th>
+                                        <th>
+                                            <a href="{{ academic_detail.course.pdf.url }}">Click To See File</a>
+
+                                        </th>
+                                    </tr>
+                                {% endif %}
                                 <tr>
                                     <th>
                                         Açıklama:
@@ -75,18 +86,6 @@
                                         {{ academic_detail.course_abstract|safe }}
                                     </td>
                                 </tr>
-{#                                {% if academic_info_detail %}#}
-{##}
-{#                                {% endif %}#}
-{#                                <tr>#}
-{#                                    <th>#}
-{#                                        PDF:#}
-{#                                    </th>#}
-{#                                    <th>#}
-{#                                        <a href="media/{{ academic_info_detail.pdf }}">{{ academic_info_detail.course.pdf }}</a>#}
-{##}
-{#                                    </th>#}
-{#                                </tr>#}
                                 </tbody>
                             </table>
                         </div>

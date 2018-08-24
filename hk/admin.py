@@ -76,7 +76,13 @@ class ThesisJuryMembershipTranslationAdmin(admin.ModelAdmin):
     # ordering = ('-date')
 admin.site.register(Thesis_Jury_Membership, SupervisedThesisTranslationAdmin)
 
+class ResearchInterestAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Research_Interest, ResearchInterestAdmin)
 
+class ResearchInterestTranslationAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Research_Interest_Translation, ResearchInterestTranslationAdmin)
 
 
 

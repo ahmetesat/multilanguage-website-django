@@ -1,8 +1,28 @@
 {% extends base_publications %}
-
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
+
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section current" href="{% url 'Articles' %}">
+                    <span>{% trans "Makaleler" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'Books' %}">
+                    <span>{% trans "Kitaplar" %}</span>
+                </a>
+            </div>
+            <div class="div-base-navbar-section">
+                <a class="a-base-navbar-section" href="{% url 'internet_publications' %}">
+                    <span>{% trans "İnternet Yayınları" %}</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
@@ -24,15 +44,15 @@
                         </th>
                     </tr>
                     </thead>
-                    {% for makale in publication_info%}
+                    {% for makale in publication_info %}
                         <tbody>
 
                         <tr>
                             <td>
-                                <a href="{% url 'Article_Detail' makale.article.pk makale.name  %}">{{ makale.name}}</a>
+                                <a href="{% url 'Article_Detail' makale.article.pk makale.name %}">{{ makale.name }}</a>
                             </td>
                             <td>
-                                {{ makale.pub_year }}
+                                {{ makale.article.pub_year | date:"M Y"}}
                             </td>
                             <td>
                                 {{ makale.article.article_language }}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Araştırma Alanları
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'home' %}">Ana Sayfa</a>
+        </li>
+        <li class="breadcrumb-item active">About</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
+        </div>
+        <div class="col-lg-6">
+          <h2>Araştırma Alanları </h2>
+            {% for interest in research_interest %}
+                <p>{{ interest.name}}</p>
+            {% endfor %}
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    {% endblock %}
