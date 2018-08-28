@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 {% block content %}
 
     <div class="container">
@@ -16,7 +17,7 @@
                                 <tbody>
                                 <tr>
                                     <th>
-                                        Yazar(lar):
+                                        {% trans "Yazar(lar):" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.author_names.all |join:", " }}
@@ -24,7 +25,7 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        Tarih:
+                                        {% trans "Tarih:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.internet_article_date | date:"M Y" }}
@@ -34,7 +35,7 @@
                                     {% if publication_detail.website_name %}
 
                                         <th>
-                                            Website Adı:
+                                            {% trans "Website Adı:" %}
                                         </th>
                                         <td>
                                             {{ publication_detail.website_name }}
@@ -45,7 +46,7 @@
                                 <tr>
                                     {% if publication_detail.website_link %}
                                         <th>
-                                            Website Link:
+                                            {% trans "Website Link:" %}
                                         </th>
                                         <td>
                                             {{ publication_detail.website_link }}
@@ -55,7 +56,7 @@
 
                                 <tr>
                                     <th>
-                                        Açıklama:
+                                        {% trans "Açıklama:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.article_content|safe }}

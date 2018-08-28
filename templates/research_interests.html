@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block content %}
     <!-- Page Content -->
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Araştırma Alanları
+      <h1 class="mt-4 mb-3">{% trans "Araştırma Alanları" %}
       </h1>
 
       <ol class="breadcrumb">
@@ -21,12 +22,10 @@
         <div class="col-lg-6">
           <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
         </div>
-        <div class="col-lg-6">
-          <h2>Araştırma Alanları </h2>
+        <div class="col-lg-6 research-interests">
             {% for interest in research_interest %}
                 <p>{{ interest.name}}</p>
             {% endfor %}
-
         </div>
       </div>
       <!-- /.row -->

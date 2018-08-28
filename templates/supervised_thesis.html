@@ -1,4 +1,4 @@
-{% extends base_academic_life %}
+{% extends "base_academic_life.html" %}
 {% load i18n %}
 
 {% block content %}
@@ -37,21 +37,21 @@
 
             <div class="col-12">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="header1-table">
                     <tr>
                         <th>
-                            Makale Sahibi:
+                            {% trans "Makale Sahibi:" %}
                         </th>
                         <th>
-                            Makale Adı:
+                            {% trans "Makale Adı:" %}
                         </th>
                         <th>
-                            Tarih:
+                            {% trans "Tarih:" %}
                         </th>
                     </tr>
                     </thead>
-                    {% for academic in academic_life%}
-                        <tbody>
+                    <tbody class="body1-table">
+                    {% for academic in academic_life %}
                         <tr>
                             <td>
                                 {{ academic.thesis_owner }}
@@ -63,9 +63,8 @@
                                 {{ academic.year }}
                             </td>
                         </tr>
-                        </tbody>
-
                     {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -1,4 +1,4 @@
-{% extends base_academic_life %}
+{% extends "base_academic_life.html" %}
 {% load i18n %}
 
 {% block content %}
@@ -33,34 +33,34 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">Öğretim Deneimi</h3>
+        <h3 class="my-4">{% trans "Öğretim Deneyimi" %}</h3>
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="header1-table">
                     <tr>
                         <th>
-                            Ders:
+                            {% trans "Ders:" %}
                         </th>
                         <th>
-                            Kurum Adı:
+                            {% trans "Kurum Adı:" %}
                         </th>
                         <th>
-                            Tarih:
+                            {% trans "Tarih:" %}
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for kurs in academic_info %}
                         <tr>
-                            <td>
+                            <td class="detail-link">
                                 <a href="{% url 'Course_Detail' kurs.course.pk kurs.name %}">{{ kurs.name }}</a>
                             </td>
                             <td>
-                                {{ kurs.university }}
+                                {{ kurs.institution }}
                             </td>
                             <td>
-                                {{ kurs.year }} {{ kurs.course_season }}
+                                {{ kurs.year | date:"Y" }} - {{ kurs.course_season }}
                             </td>
                         </tr>
                     {% endfor %}

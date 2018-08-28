@@ -1,20 +1,8 @@
-{% extends base_publications %}
+{% extends "base_publications.html" %}
 {% load i18n %}
 
 {% block content %}
     {{ block.super }}
-
-    {#    <!-- Base Navbar Start -->#}
-    {#    <div class="container container-base-nav-bar">#}
-    {#        <ul class="base-template-nav-bar">#}
-    {#            <li><a class="base-navbar-section" href="{% url 'Articles' %}"><span>{% trans "Makaleler" %}</span></a></li>#}
-    {#            <li><a class="base-navbar-section" href="{% url 'Books' %}"><span>{% trans "Kitaplar" %}</span></a>#}
-    {#            </li>#}
-    {#            <li><a class="base-navbar-section current"#}
-    {#                   href="{% url 'internet_publications' %}"><span>{% trans "İnternet Yayınları" %}</span></a></li>#}
-    {#        </ul>#}
-    {#    </div>#}
-    {#    <!-- Base Navbar End -->#}
 
     <div class="container">
         <div class="scrolling-wrapper">
@@ -38,12 +26,12 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">İnternet Yayınları</h3>
+        <h3 class="my-4">{% trans "İnternet Yayınları" %}</h3>
         <div class="row">
             <div class="col-12">
-                    <ul class="citation-list">
+                    <ul class="citation-list body1-table">
                         {% for internet_pub in publication_info %}
-                        <li class="publication-list-item">
+                        <li class="publication-list-item detail-link">
                             <a href="{% url 'internet_publication_detail' internet_pub.pk internet_pub.name %}">
                                 {{ internet_pub.name }}
                             </a>

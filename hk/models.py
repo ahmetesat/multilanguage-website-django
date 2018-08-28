@@ -25,15 +25,18 @@ class Authors(models.Model):
         verbose_name_plural = "Authors"
 
 
-class Universities(models.Model):
-    name = models.CharField(max_length=60, unique=True, verbose_name="University Name")
+class Institution(models.Model):
+    name = models.CharField(max_length=255,
+                            unique=True,
+                            default="Istanbul Medeniyet University",
+                            verbose_name="Instituon Name")
 
     def __str__(self):
         return "%s" % (self.name)  # In Admin Page see the name itself not as object
 
     class Meta:
-        verbose_name = "University"
-        verbose_name_plural = "Universities"
+        verbose_name = "Institution"
+        verbose_name_plural = "Institutions"
 
 
 class Content_Language(models.Model):  # Exp. tr, en ..
@@ -249,36 +252,25 @@ class Book_Translation(models.Model):
 
 
 class Course(models.Model):
-    Season_Choice = (
-        ('Sonbahar', 'Sonbahar'),
-        ('Kış', 'Kış'),
-        ('İlkbahar', 'İlkbahar'),
-        ('Yaz', 'Yaz')
-    )
     name_bsc = models.CharField(max_length=255, unique=True,
-                                verbose_name="Name")  # Name of the course
+                                verbose_name="Name*")  # Name of the course
 
     course_code = models.CharField(max_length=10,
                                    blank=True,
                                    verbose_name="Course Code(Not Obligatory)")  # Course code
 
-    course_season = models.CharField(max_length=12,
-                                     help_text="EX: Sonbahar",
-                                     verbose_name="Course Season",
-                                     choices=Season_Choice,
-                                     default='Sonbahar')  # Course language
-
-    year = models.IntegerField(verbose_name="Course year",
-                               help_text="EX: 2018")  # Course department or for who
+    year = models.DateField(default=datetime.date.today,
+                            help_text="Ex: 2018(Only year will be visible)",
+                            verbose_name="Course Year*")  # Publish Year)  # Conference Date
 
     course_language = models.ForeignKey(Content_Language,
                                         help_text="Course Language",
-                                        verbose_name="Course Language",
+                                        verbose_name="Course Language*",
                                         default=0,  # Default is tr
                                         on_delete=models.CASCADE)  # Course language
 
     section = models.ForeignKey(All_Navbar_Sections,
-                                verbose_name="Navbar Section",
+                                verbose_name="Navbar Section*",
                                 on_delete=models.CASCADE)
 
     pdf = models.FileField(upload_to='pdf/',
@@ -296,13 +288,31 @@ class Course(models.Model):
 
 
 class Course_Translation(models.Model):
+    Season_Choice = (
+        ('Sonbahar', 'Sonbahar'),
+        ('Autumn', 'Autumn'),
+        ('Kış', 'Kış'),
+        ('Winter', 'Winter'),
+        ('İlkbahar', 'İlkbahar'),
+        ('Spring', 'Spring'),
+        ('Yaz', 'Yaz'),
+        ('Summer', 'Summer'),
+    )
     name = models.CharField(max_length=255,
-                            verbose_name="Name")  # Name of the course
+                            verbose_name="Name*")  # Name of the course
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
-    university = models.ForeignKey(Universities,
-                                   verbose_name="University",
-                                   on_delete=models.CASCADE)  # University name that is given course
+    course_season = models.CharField(max_length=12,
+                                     help_text="EX: Sonbahar",
+                                     verbose_name="Course Season*",
+                                     choices=Season_Choice,
+                                     default='Sonbahar')  # Course language
+
+    institution = models.ForeignKey(Institution,
+                                    verbose_name="Institution",
+                                    help_text="EX: Medeniyet University",
+                                    default=0,
+                                    on_delete=models.CASCADE)
 
     department = models.CharField(max_length=255,
                                   verbose_name="Course department",
@@ -335,15 +345,17 @@ class Conference(models.Model):
                                           help_text="Choose An Participant",
                                           verbose_name="Participant Names")  # Author manes
 
-    location = models.CharField(
-        max_length=255,
-        help_text="Ex: Medeniyet Üniversitesi",
-        verbose_name="Conference Location")  # Conference Location
+
+    institution = models.ForeignKey(Institution,
+                                    verbose_name="Institution",
+                                    help_text="EX: Medeniyet University",
+                                    default=0,
+                                    on_delete=models.CASCADE)
 
     conference_link = models.URLField(
-        unique=True,
-        blank=True
-    )  # Conference Link
+        blank=True,
+        help_text="Conference Link(Not Obligatory)",
+        verbose_name="Conference Link(Not Obligatory)")
     date = models.DateField(default=datetime.date.today)  # Conference Date
 
     def __str__(self):

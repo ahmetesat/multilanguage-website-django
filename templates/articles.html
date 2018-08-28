@@ -1,4 +1,4 @@
-{% extends base_publications %}
+{% extends "base_publications.html" %}
 {% load i18n %}
 
 {% block content %}
@@ -26,36 +26,35 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">Articles</h3>
+        <h3 class="my-4">{% trans "Makaleler" %}</h3>
         <div class="row">
 
             <div class="col-12">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="header1-table">
                     <tr>
                         <th>
-                            Makale Adı:
+                            {% trans "Makale Adı:" %}
                         </th>
                         <th>
-                            Yayın Tarihi:
+                            {% trans "Yayın Tarihi:" %}
                         </th>
                         <th>
-                            İçerik Dili:
+                            {% trans "İçerik Dili:" %}
                         </th>
                     </tr>
                     </thead>
                     {% for makale in publication_info %}
-                        <tbody>
-
+                        <tbody class="body1-table">
                         <tr>
-                            <td>
-                                <a href="{% url 'Article_Detail' makale.article.pk makale.name %}">{{ makale.name }}</a>
+                            <td class="detail-link">
+                                <a href="{% url 'Article_Detail' makale.article makale.name %}">{{ makale.name }}</a>
                             </td>
                             <td>
-                                {{ makale.article.pub_year | date:"M Y"}}
+                                {{ makale.pub_year | date:"M Y" }}
                             </td>
                             <td>
-                                {{ makale.article.article_language }}
+                                {{ makale.article_language}}
                             </td>
                         </tr>
                         </tbody>

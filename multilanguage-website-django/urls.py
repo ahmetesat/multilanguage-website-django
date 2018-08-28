@@ -15,16 +15,19 @@ Including another URLconf
 """
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from django.conf.urls import url, static
+from django.conf.urls import url, static, handler403, handler400, handler500
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
+
+
 from hk.views import *
 from django.urls import re_path
 from django.views.static import serve
 
-# handler403 = '_handler403'
-# handler404 = '_handler404'
-# handler500 = '_handler500'
+
+# handler403 = 'hk.views.error_handler403'
+# handler404 = 'hk.views.error_handler404'
+# handler500 = 'hk.views.error_handler500'
 
 urlpatterns = [
     url(r'^(?P<filename>(robots.txt)|(humans.txt))$',
@@ -54,6 +57,7 @@ urlpatterns += i18n_patterns(
     url(r'^research_interests$', research_interest_detail, name="research_interest_detail")
 
 )
+
 
 if settings.DEBUG:
     urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

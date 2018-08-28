@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
+
 {% block content %}
 
     <div class="container">
@@ -18,7 +20,7 @@
                                 <tbody>
                                 <tr>
                                     <th>
-                                        Kurs Adı:
+                                        {% trans "Kurs Adı:" %}
                                     </th>
                                     <td>
                                         {{ academic_detail.name }}
@@ -27,7 +29,7 @@
                                 {% if academic_detail.course.course_code %}
                                     <tr>
                                         <th>
-                                            Kurs Kodu:
+                                            {% trans "Kurs Kodu:" %}
                                         </th>
                                         <td>
                                             {{ academic_detail.course.course_code }}
@@ -36,51 +38,53 @@
                                 {% endif %}
                                 <tr>
                                     <th>
-                                        Sezon:
+                                        {% trans "Sezon:" %}
                                     </th>
                                     <td>
-                                        {{ academic_detail.year }} - {{ academic_detail.course_season }}
+                                        {{ academic_detail.year | date:"Y" }} - {{ academic_detail.course_season }}
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th>
-                                        Kurum Adı:
+                                        {% trans "Kurum Adı:" %}
                                     </th>
                                     <td>
-                                        {{ academic_detail.university }}
+                                        {{ academic_detail.institution }}
                                     </td>
                                 </tr>
+                                {% if academic_detail.department %}
+                                    <tr>
+                                        <th>
+                                            {% trans "Departman:" %}
+                                        </th>
+                                        <td>
+                                            {{ academic_detail.department }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
                                 <tr>
                                     <th>
-                                        Departman:
-                                    </th>
-                                    <td>
-                                        {{ academic_detail.department }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        Kurs Dili:
+                                        {% trans "Kurs Dili:" %}
                                     </th>
                                     <td>
                                         {{ academic_detail.course.course_language }}
                                     </td>
                                 </tr>
-                                {% if academic_info_detail %}
+                                {% if academic_detail.course.pdf %}
                                     <tr>
                                         <th>
                                             PDF:
                                         </th>
                                         <th>
-                                            <a href="{{ academic_detail.course.pdf.url }}">Click To See File</a>
+                                            <a href="{{ academic_detail.course.pdf.url }}">{% trans "Dosyayı Görmek İçin Tıklayınız" %}</a>
 
                                         </th>
                                     </tr>
                                 {% endif %}
                                 <tr>
                                     <th>
-                                        Açıklama:
+                                        {% trans "Açıklama:" %}
                                     </th>
                                     <td>
                                         {{ academic_detail.course_abstract|safe }}

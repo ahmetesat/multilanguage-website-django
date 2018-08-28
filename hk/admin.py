@@ -11,9 +11,9 @@ class AuthorsAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Authors,AuthorsAdmin)
 
-class UniversitiesAdmin(admin.ModelAdmin):
+class InstitutionAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Universities,AuthorsAdmin)
+admin.site.register(Institution,InstitutionAdmin)
 
 class ContentLanguageAdmin(admin.ModelAdmin):
     pass

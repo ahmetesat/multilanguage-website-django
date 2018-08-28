@@ -1,20 +1,8 @@
-{% extends base_publications %}
+{% extends "base_publications.html" %}
 {% load i18n %}
 
 {% block content %}
     {{ block.super }}
-
-{#    <!-- Base Navbar Start -->#}
-{#    <div class="container container-base-nav-bar">#}
-{#        <ul class="base-template-nav-bar">#}
-{#            <li><a class="base-navbar-section" href="{% url 'Articles' %}"><span>{% trans "Makaleler" %}</span></a></li>#}
-{#            <li><a class="base-navbar-section current" href="{% url 'Books' %}"><span>{% trans "Kitaplar" %}</span></a>#}
-{#            </li>#}
-{#            <li><a class="base-navbar-section"#}
-{#                   href="{% url 'internet_publications' %}"><span>{% trans "İnternet Yayınları" %}</span></a></li>#}
-{#        </ul>#}
-{#    </div>#}
-{#    <!-- Base Navbar End -->#}
 
     <div class="container">
         <div class="scrolling-wrapper">
@@ -38,29 +26,29 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">Books</h3>
+        <h3 class="my-4">{% trans "Kitaplar" %}</h3>
         <div class="row">
 
             <div class="col-12">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="header1-table">
                     <tr>
                         <th>
-                            Kitap Adı:
+                            {% trans "Kitap Adı:" %}
                         </th>
                         <th>
-                            Yayın Tarihi:
+                            {% trans "Yayın Tarihi:" %}
                         </th>
                         <th>
-                            İçerik Dili:
+                            {% trans "İçerik Dili:" %}
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="body1-table">
                     {% for book in publication_info %}
                         <tr>
 
-                            <td>
+                            <td class="detail-link">
                                 <a href="{% url 'Book_Detail' book.book.pk book.name %}">{{ book.name }}</a>
                             </td>
                             <td>
@@ -74,73 +62,7 @@
                     </tbody>
                 </table>
             </div>
-
-
-            {% comment %}{% for makale in article_info %}
-                <div class="col-12">
-                    <h3>{{ makale.name }}</h3>
-                    <table class="table table-sm table-responsive">
-                        <tbody>
-                        <tr>
-                            <th>
-                                Yazar(lar):
-                            </th>
-                            <td>
-                                {{ makale.author_names }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Yayıncı:
-                            </th>
-                            <td>
-                                {{ makale.publisher }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Yayın Tarihi:
-                            </th>
-                            <td>
-                                {{ makale.pub_year }}
-                            </td>
-                        </tr>
-                        <tr>
-                            {% if makale.pp %}
-                                <th>
-                                    Sayfalar:
-                                </th>
-                                <td>
-                                    {{ makale.pp }}
-                                </td>
-                            {% endif %}
-                        </tr>
-                        <tr>
-                            <th>
-                                İçerik Dili:
-                            </th>
-                            <td>
-                                {{ makale.content_language }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Açıklama:
-                            </th>
-                            <th>
-                                <p>ASASASSASssssssssss sssssssssssssssssssss sssssssssssssssssssssss sssssssssss ASASASSASssssssssss sssssssssssssssssssss sssssssssssssssssssssss sssssssssss</p>
-                                {#                                {{ makale.abstract }}#}
-                            </th>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-                </div>
-            {% endfor %}
-{% endcomment %}        </div>
+        </div>
 
     </div>
-
-
 {% endblock %}

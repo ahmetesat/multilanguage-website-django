@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block content %}
     <!-- Page Content -->
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">Hakkında
+        <h1 class="mt-4 mb-3">{% trans "Hakkında" %}
         </h1>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{% url 'home' %}">Ana Sayfa</a>
+                <a href="{% url 'home' %}">{% trans "Ana Sayfa" %}</a>
             </li>
             <li class="breadcrumb-item active">Hakkında</li>
         </ol>

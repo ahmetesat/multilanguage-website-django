@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load i18n %}
+
 {% block content %}
 
     <div class="container">
@@ -16,7 +18,7 @@
                                 <tbody>
                                 <tr>
                                     <th>
-                                        Yazar(lar):
+                                        {% trans "Yazar(lar):" %}
                                     </th>
                                         <td>
                                             {{ publication_detail.book.author_names.all | join:", " }}
@@ -24,7 +26,7 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        Yayıncı:
+                                        {% trans "Yayıncı:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.book.publisher }}
@@ -32,7 +34,7 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        Yayın Tarihi:
+                                        {% trans "Yayın Tarihi:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.book.pub_year | date:"M Y" }}
@@ -50,7 +52,7 @@
                                 {% endif %}
                                 <tr>
                                         <th>
-                                            Sayfa Sayısı:
+                                            {% trans "Sayfa Sayısı:" %}
                                         </th>
                                         <td>
                                             {{ publication_detail.book.page_count }}
@@ -58,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        İçerik Dili:
+                                        {% trans "İçerik Dili:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.book.book_language }}
@@ -70,14 +72,14 @@
                                         PDF:
                                     </th>
                                     <th>
-                                        <a href="{{ publication_detail.book.pdf.url }}">Click To See File</a>
+                                        <a href="{{ publication_detail.book.pdf.url }}">{% trans "Dosyayı Görmek İçin Tıklayınız" %}</a>
 
                                     </th>
                                 </tr>
                                 {% endif %}
                                 <tr>
                                     <th>
-                                        Açıklama:
+                                        {% trans "Açıklama:" %}
                                     </th>
                                     <td>
                                         {{ publication_detail.book_abstract|safe }}
