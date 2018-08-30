@@ -51,16 +51,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for kurs in academic_info %}
+                    {% for course in academic_info %}
                         <tr>
                             <td class="detail-link">
-                                <a href="{% url 'Course_Detail' kurs.course.pk kurs.name %}">{{ kurs.name }}</a>
+                                <a href="{% url 'Course_Detail' course.course course.name %}">{{ course.name }}</a>
                             </td>
                             <td>
-                                {{ kurs.institution }}
+                                {{ course.institution }}
                             </td>
                             <td>
-                                {{ kurs.year | date:"Y" }} - {{ kurs.course_season }}
+                                {{ course.year | date:"Y" }} - {{ course.course_season }}
                             </td>
                         </tr>
                     {% endfor %}

@@ -1,9 +1,19 @@
-{% extends "base_publications.html" %}
-
+{% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     {{ block.super }}
 
-    <h1>403</h1>
-
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <section id="fof" class="clear">
+      <div class="hgroup">
+        <h1><span><strong>4</strong></span><span><strong>0</strong></span><span><strong>3</strong></span></h1>
+        <h2>{% trans "Hata!" %}<span>{% trans "Yetki Hatası" %}</span></h2>
+      </div>
+      <p>{% trans "İlgili Sayfa İçin Yetkiniz Bulunmamaktadır" %}</p>
+      <p><a href="javascript:history.go(-1)">&laquo; {% trans "Geri Dön" %}</a> / <a href="{% url 'home' %}">{% trans "Anasayfa" %}Go Home &raquo;</a></p>
+    </section>
+  </div>
+</div>
 {% endblock %}

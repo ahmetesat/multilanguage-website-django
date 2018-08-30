@@ -19,19 +19,16 @@ def error_handler403(request, exception, template_name='403.html'):
     return response
 
 
-def error_handler404(request):
-    response = render_to_response('404.html', {},
-                                  context_instance=RequestContext(request))
+def error_handler404(request, exception, template_name='404.html'):
+    response = render(request, "404.html", {})
     response.status_code = 404
     return response
 
 
-def error_handler500(request):
-    response = render_to_response('500.html', {},
-                                  context_instance=RequestContext(request))
+def error_handler500(request, exception, template_name='404.html'):
+    response = render(request, "500.html", {})
     response.status_code = 500
     return response
-
 
 def home_files(request, filename):  # robots.txt and humans.txt required for searc engines
     return render(request, filename, {}, content_type="text/plain")
@@ -98,11 +95,16 @@ def book_page(request):
     try:
         selected_language = translation.get_language()  # Gets the current selected language
         if request.method == 'GET':
-
-            book_info = Book_Translation.objects.filter(website_language__language=selected_language)
+            book_info = Book_Translation.objects.filter(website_language__language=selected_language) \
+                .annotate(pub_year=F("book__pub_year"),
+                          book_language=F("book__book_language__language")) \
+                .values("book", "name", "pub_year", "book_language")
             if not book_info:
-                book_info = Book_Translation.objects.filter(
-                    website_language__language="tr")
+                book_info = Book_Translation.objects.filter(website_language__language="tr") \
+                    .annotate(pub_year=F("book__pub_year"),
+                              book_language=F("book__book_language__language")) \
+                    .values("book", "name", "pub_year", "book_language")
+
             return render(request, "books.html",
                           {"publication_info": book_info})
     except:
@@ -144,12 +146,11 @@ def internet_publications(request):
 
 
 def internet_publication_detail(request, pk=None, internet_pub_artic_name=None):
-
     if request.method == 'GET':
         publication_info_detail = Internet_Publication.objects.filter(pk=pk)
 
         return render(request, "internet_publication_detail.html"
-                      ,{"publication_info_detail": publication_info_detail})
+                      , {"publication_info_detail": publication_info_detail})
 
 
 # except:
@@ -157,24 +158,22 @@ def internet_publication_detail(request, pk=None, internet_pub_artic_name=None):
 
 
 def course_page(request):
-    # try:
-    selected_language = translation.get_language()  # Gets the current selected language
-    if request.method == 'GET':
-        course_info = Course_Translation.objects.all()
-        # course_info = Course_Translation.objects.\
-        #     filter(website_language__language=selected_language)
-        #
-        #
-        # if not course_info:
-        #     course_info = Course_Translation.objects.\
-        #         filter(website_language__language="tr")
+    try:
+        selected_language = translation.get_language()  # Gets the current selected language
+        if request.method == 'GET':
+            course_info = Course_Translation.objects.filter(website_language__language=selected_language) \
+                .annotate(year=F("course__year")) \
+                .values("course", "name", "institution", "year", "course_season")
+            if not course_info:
+                course_info = Course_Translation.objects.filter(website_language__language="tr") \
+                    .annotate(year=F("course__year")) \
+                    .values("course", "name", "institution", "year", "course_season")
 
-        return render(request, "courses.html",
-                      {"academic_info": course_info})
+            return render(request, "courses.html",
+                          {"academic_info": course_info})
 
-
-# except:
-#     pass
+    except:
+        pass
 
 
 def course_detail(request, pk=None, course_name=None):
@@ -190,7 +189,6 @@ def course_detail(request, pk=None, course_name=None):
                 academic_info_detail = Course_Translation.objects. \
                     filter(website_language__language="tr"). \
                     filter(course__name=pk)
-                # filter(course__name=course_name)
 
             return render(request,
                           "course_detail.html",
@@ -200,15 +198,15 @@ def course_detail(request, pk=None, course_name=None):
 
 
 def conference_page(request):
-    if request.method == 'GET':
-        academic_life = Conference.objects.all()
+    try:
+        if request.method == 'GET':
+            academic_life = Conference.objects.all()
 
-        return render(request, "conferences.html",
-                      {"academic_life": academic_life})
+            return render(request, "conferences.html",
+                          {"academic_life": academic_life})
 
-
-# except:
-#     pass
+    except:
+        pass
 
 def supervised_thesis_page(request):
     if request.method == 'GET':

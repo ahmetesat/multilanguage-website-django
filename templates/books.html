@@ -49,13 +49,13 @@
                         <tr>
 
                             <td class="detail-link">
-                                <a href="{% url 'Book_Detail' book.book.pk book.name %}">{{ book.name }}</a>
+                                <a href="{% url 'Book_Detail' book.book book.name %}">{{ book.name }}</a>
                             </td>
                             <td>
-                                {{ book.book.pub_year | date:"M Y" }}
+                                {{ book.pub_year | date:"M Y" }}
                             </td>
                             <td>
-                                {{ book.book.book_language }}
+                                {{ book.book_language }}
                             </td>
                         </tr>
                     {% endfor %}
