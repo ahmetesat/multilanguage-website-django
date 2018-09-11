@@ -19,11 +19,9 @@ from django.conf.urls import url, static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 
-
 from hk.views import *
 from django.urls import re_path
 from django.views.static import serve
-
 
 handler403 = 'hk.views.error_handler403'
 handler404 = 'hk.views.error_handler404'
@@ -54,10 +52,12 @@ urlpatterns += i18n_patterns(
     url(r'^Academic/Conferences$', conference_page, name="Conferences"),
     url(r'^Academic/Supervised_Thesis$', supervised_thesis_page, name="Supervised_Thesis"),
     url(r'^Academic/Thesis_Jury_Membership$', thesis_jury_membership_page, name="Thesis_Jury_Membership"),
-    url(r'^research_interests$', research_interest_detail, name="research_interest_detail")
+    url(r'^research_interests$', research_interest_detail, name="research_interest_detail"),
+
+    url(r'^Contact/', contact, name="Contact"),
+    url(r'^contact_send_email/$', contact_send_email, name="contact_send_email")
 
 )
-
 
 if settings.DEBUG:
     urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

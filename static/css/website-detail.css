@@ -36,14 +36,13 @@
     color: black;
 }
 
-.body1-table td, .body1-table li p{
-    font-family: 'HelveticaNeueW01-55Roma','Helvetica LT Std Light','Helvetica Neue LT Std',Helvetica;
+.body1-table td, .body1-table li p {
+    font-family: 'HelveticaNeueW01-55Roma', 'Helvetica LT Std Light', 'Helvetica Neue LT Std', Helvetica;
     color: black;
 }
 
-
-.research-interests{
-    font-family: 'HelveticaNeueW01-55Roma','Helvetica LT Std Light','Helvetica Neue LT Std',Helvetica;
+.research-interests {
+    font-family: 'HelveticaNeueW01-55Roma', 'Helvetica LT Std Light', 'Helvetica Neue LT Std', Helvetica;
     color: black;
 }
 
@@ -66,30 +65,30 @@ html, body {
     height: 100%;
 }
 
-.page-wrap {
-    min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -142px;
-}
+/*.page-wrap {*/
+/*min-height: 100%;*/
+/*!* equal to footer height *!*/
+/*margin-bottom: -142px;*/
+/*}*/
 
-.page-wrap:after {
-    content: "";
-    display: block;
-}
+/*.page-wrap:after {*/
+/*content: "";*/
+/*display: block;*/
+/*}*/
 
-.site-footer, .page-wrap:after {
-    height: 142px;
-}
+/*.site-footer, .page-wrap:after {*/
+/*height: 200px;*/
+/*}*/
 
-.site-footer {
-    background: orange;
-}
+/*.site-footer {*/
+/*background: orange;*/
+/*}*/
 
-/*------------------Internet Publication------------------*/
+/*START------------------Internet Publication------------------START*/
 
 .detail-link a:hover {
     color: white !important;
-    background-color:#ff6548 !important;
+    background-color: #ff6548 !important;
 }
 
 .detail-link a {
@@ -104,9 +103,16 @@ html, body {
     padding-bottom: 15px;
 }
 
-/*------------------Internet Publication------------------*/
+/*END------------------Internet Publication------------------END*/
 
-/*------------------INLINE NAVBAR------------------*/
+/*START------------------NAVBAR MAIN------------------START*/
+.navbar-home {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+/*END------------------NAVBAR MAIN------------------END*/
+
+/*START------------------INLINE NAVBAR------------------START*/
 .scrolling-wrapper {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -140,4 +146,61 @@ html, body {
     border-bottom: 3px #ff6548 solid;
 }
 
-/*------------------INLINE NAVBAR------------------*/
+/*END------------------INLINE NAVBAR------------------END*/
+
+/*START------------------ICONS------------------START*/
+.icon-background {
+    color: #fff0ff;
+}
+
+.social-media-icons {
+    text-align: center;
+}
+
+.social-media-icons ul li {
+    list-style-type: none;
+    float: Left;
+    display: block;
+    padding: 0 8px;
+
+}
+
+.social-media-icons ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-button-div {
+    clear: left;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.contact-button {
+    width: 200px !important;
+    background-color: #3379be;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #285e8e;
+    /*border-color: #285e8e; !*set the color you want here*!*/
+}
+
+/*END------------------ICONS------------------END*/
+
+.footer-navigation ul li {
+    list-style-type: none;
+    color: white;
+}
+
+.site-footer .footer-row1 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-row2 {
+    padding-bottom: 20px;
+}

@@ -106,21 +106,23 @@ class Article(models.Model):
                                          default=0,  # Default is tr
                                          on_delete=models.CASCADE)  # Article language
     pub_year = models.DateField(default=datetime.date.today,
-                                blank=True,
                                 help_text="Ex: June 2018",
-                                verbose_name="Published Year(Not Obligatory)")  # Publish Year)  # Conference Date
+                                verbose_name="Published Year*")  # Publish Year)  # Conference Date
     pp = models.CharField(max_length=15,
                           blank=True,
                           help_text="Page Start and Page End(Not Obligatory): Ex:10-20",
                           verbose_name="PP.(Not Obligatory)")
     volume = models.IntegerField(blank=True,
+                                 null=True,
                                  help_text="Cilt no - Ex: 7",
                                  verbose_name="Volume(Not Obligatory)")
     issue = models.IntegerField(blank=True,
+                                null=True,
                                 help_text="Sayı - Ex: 52",
                                 verbose_name="Issue(Not Obligatory)")
     page_count = models.IntegerField(verbose_name="Page Count",
                                      blank=True,
+                                     null=True,
                                      help_text="Total Page Number")  # How many page is there
     journal_title = models.CharField(max_length=255,
                                      help_text="Journal Title*",
@@ -344,7 +346,6 @@ class Conference(models.Model):
     participants = models.ManyToManyField(Authors,
                                           help_text="Choose An Participant",
                                           verbose_name="Participant Names")  # Author manes
-
 
     institution = models.ForeignKey(Institution,
                                     verbose_name="Institution",

@@ -1,8 +1,12 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, redirect, render_to_response
 from django.utils import translation
+from django.core.mail import send_mail, EmailMessage, BadHeaderError
 import logging
 from django.db.models import F
+from django.conf import settings
+
 from hk.models import *
+from hk.forms import ContactForm
 from django.template import RequestContext
 
 from django.template import Template, Context, loader
@@ -58,8 +62,9 @@ def article_page(request):
         if request.method == 'GET':
             article_info = Article_Translation.objects.filter(website_language__language=selected_language) \
                 .annotate(pub_year=F("article__pub_year"),
-                          article_language=F("article__article_language__language")) \
-                .values("article", "name", "pub_year", "article_language")
+                          article_language=F("article__article_language__language"),
+                          pk=F("article__pk")) \
+                .values("pk", "name", "pub_year", "article_language")
             if not article_info:
                 article_info = Article_Translation.objects.filter(website_language__language="tr") \
                     .annotate(pub_year=F("article__pub_year"),
@@ -83,7 +88,7 @@ def article_detail(request, pk=None, article_name=None):  # Gets chosen article 
                 filter(article__pk=pk)
             if not publication_info_detail:
                 publication_info_detail = Article_Translation.objects.filter(
-                    website_language__language="tr").filter(article__name=pk)
+                    website_language__language="tr").filter(article__pk=pk)
 
             return render(request, "article_detail.html",
                           {"publication_info_detail": publication_info_detail})
@@ -246,3 +251,35 @@ def research_interest_detail(request):
 
     except:
         pass
+
+def contact(request):
+    try:
+        return render(request, "contact.html")
+    except:
+        pass
+
+
+def contact_send_email(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            print("form valid")
+            full_name = form.cleaned_data['full_name']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            subject = "HK Website Contact - %s - %s" % (full_name, from_email)
+
+            try:
+                print("33e3e3e")
+                email = EmailMessage(subject, message, from_email, ['cphesap@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
+                # send() sends the email
+                email.send()
+
+                # send_mail(subject, message, from_email, ['cphesap@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
+                print(1)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('home')
+    print(4)
+    return redirect('home')

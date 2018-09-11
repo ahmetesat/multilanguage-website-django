@@ -23,13 +23,14 @@
     <!-- Detail styles defined later for this template -->
     <link href="{% static  'css/website-detail.css' %}" rel="stylesheet">
     <link href="{% static  'css/error-handle.css' %}" rel="stylesheet">
+    <link href="{% static  'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
 
 <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-white fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-white fixed-top navbar-home">
     <div class="container">
         <a class="navbar-brand" style="color: black" href="{% url 'home' %}">{% trans "Doç. Dr." %}<b> Hacı KARA</b></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -56,15 +57,77 @@
 </nav>
 
 <div class="page-wrap">
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 </div>
 
-
 <!-- Footer -->
-<footer class="py-5 bg-dark site-footer" >
+<footer class="site-footer " style="background-color: black">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <div class="row footer-row1">
+            <div class="col-md-4 order-1 order-md-2 ">
+                <div class="social-media-icons">
+                <ul class="social-media-icon-list">
+                    <li>
+                        <a href="#" title="Facebook">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x icon-background "></i>
+                            <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Twitter">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x icon-background "></i>
+                            <i class="fa fa-twitter fa-stack-1x"></i>
+                        </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Linkedin">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x icon-background "></i>
+                            <i class="fa fa-linkedin fa-stack-1x"></i>
+                        </span>
+                        </a>
+                    </li>
+                </ul>
+                    </div>
+                <div class="contact-button-div">
+                    <a type="button" class="btn btn-primary btn-md contact-button"
+                       href="{% url 'Contact' %}">
+                        {% trans "İletişim" %}
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md-4 order-2 order-md-1">asdasdasd</div>
+
+            <div class=" col-md-4 order-3 order-md-3 footer-navigation">
+                <ul>
+                    <li>
+                        <a>{% trans "Hakkında" %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans "Yayınlar" %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans "Akademik Hayat" %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans "Araştırma Alanları" %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row footer-row2">
+            <div class="m-0 text-left text-white">Copyright &copy; {% now "Y" %} Hacı Kara
+                <a href="">{% trans "Gizlilik Politikası" %}</a>
+                <a href="">{% trans "Kullanım Koşulları" %}</a>
+                <a href="">{% trans "Site Haritası" %}</a>
+            </div>
+        </div>
     </div>
     <!-- /.container -->
 </footer>
