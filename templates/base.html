@@ -48,8 +48,51 @@
                 </li>
                 <li class="nav-item">
                 <li class="nav-link">
-                    <a href="/tr{{ request.get_full_path|slice:'3:' }}">TR | </a>
-                    <a href="/en{{ request.get_full_path|slice:'3:' }}">EN</a></li>
+                    {#                                        <a href="/tr{{ request.get_full_path|slice:'3:' }}">TR | </a>#}
+                    {#                                        <a href="/en{{ request.get_full_path|slice:'3:' }}">EN</a></li>#}
+                    {#                    <form action="{% url 'set_language' %}" method="post">#}
+                    {#                        {% csrf_token %}#}
+                    {#                        <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}"/>#}
+                    {#                        <input name="language" type="hidden" value="tr"/>#}
+                    {#                        <input type="submit" value="TR"/>#}
+                    {#                    </form>#}
+                    {#                    <form action="{% url 'set_language' %}" method="post">#}
+                    {#                        {% csrf_token %}#}
+                    {#                        <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}"/>#}
+                    {#                        <input name="language" type="hidden" value="en"/>#}
+                    {#                        <input type="submit" value="EN"/>#}
+                    {#                    </form>#}
+
+                    {#                                        <form action="{% url 'set_language' %}" method="post">#}
+                    {#                                            {% csrf_token %}#}
+                    {#                                            <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}"/>#}
+                    {#                                            <select name="language">#}
+                    {#                                                {% get_language_info_list for LANGUAGES as languages %}#}
+                    {#                                                {% for language in languages %}#}
+                    {#                                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}#}
+                    {#                                                            selected="selected"{% endif %}>#}
+                    {#                                                        {{ language.name_local }} ({{ language.code }})#}
+                    {#                                                    </option>#}
+                    {#                                                {% endfor %}#}
+                    {#                                            </select>#}
+                    {#                                            <input type="submit" value="Change"/>#}
+                    {#                                        </form>#}
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        <select name="language">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang in LANGUAGES %}
+                                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}
+                                        selected="selected"{% endif %}>
+                                    {{ lang.1 }} ({{ lang.0 }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Go"/>
+                    </form>
+
 
             </ul>
         </div>
@@ -67,33 +110,33 @@
         <div class="row footer-row1">
             <div class="col-md-4 order-1 order-md-2 ">
                 <div class="social-media-icons">
-                <ul class="social-media-icon-list">
-                    <li>
-                        <a href="#" title="Facebook">
+                    <ul class="social-media-icon-list">
+                        <li>
+                            <a href="#" title="Facebook">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x icon-background "></i>
                             <i class="fa fa-facebook fa-stack-1x"></i>
                         </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="Twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Twitter">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x icon-background "></i>
                             <i class="fa fa-twitter fa-stack-1x"></i>
                         </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" title="Linkedin">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Linkedin">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x icon-background "></i>
                             <i class="fa fa-linkedin fa-stack-1x"></i>
                         </span>
-                        </a>
-                    </li>
-                </ul>
-                    </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="contact-button-div">
                     <a type="button" class="btn btn-primary btn-md contact-button"
                        href="{% url 'Contact' %}">
@@ -125,7 +168,7 @@
             <div class="m-0 text-left text-white">Copyright &copy; {% now "Y" %} Hacı Kara
                 <a href="">{% trans "Gizlilik Politikası" %}</a>
                 <a href="">{% trans "Kullanım Koşulları" %}</a>
-                <a href="">{% trans "Site Haritası" %}</a>
+                <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}">{% trans "Site Haritası" %}</a>
             </div>
         </div>
     </div>

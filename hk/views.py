@@ -12,7 +12,7 @@ from django.template import RequestContext
 from django.template import Template, Context, loader
 # Create your views here.
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 logger = logging.getLogger(__name__)
 
@@ -271,7 +271,6 @@ def contact_send_email(request):
             subject = "HK Website Contact - %s - %s" % (full_name, from_email)
 
             try:
-                print("33e3e3e")
                 email = EmailMessage(subject, message, from_email, ['cphesap@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
                 # send() sends the email
                 email.send()
@@ -281,5 +280,8 @@ def contact_send_email(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('home')
-    print(4)
     return redirect('home')
+
+
+
+

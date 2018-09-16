@@ -20,18 +20,20 @@
                                     <th>
                                         {% trans "Yazar(lar):" %}
                                     </th>
-                                        <td>
-                                            {{ publication_detail.book.author_names.all | join:", " }}
-                                        </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {% trans "Yayıncı:" %}
-                                    </th>
                                     <td>
-                                        {{ publication_detail.book.publisher }}
+                                        {{ publication_detail.book.author_names.all | join:", " }}
                                     </td>
                                 </tr>
+                                {% if publication_detail.book.publisher %}
+                                    <tr>
+                                        <th>
+                                            {% trans "Yayıncı:" %}
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.book.publisher }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
                                 <tr>
                                     <th>
                                         {% trans "Yayın Tarihi:" %}
@@ -48,15 +50,15 @@
                                         <td>
                                             {{ publication_detail.book.isbn }}
                                         </td>
-                                </tr>
+                                    </tr>
                                 {% endif %}
                                 <tr>
-                                        <th>
-                                            {% trans "Sayfa Sayısı:" %}
-                                        </th>
-                                        <td>
-                                            {{ publication_detail.book.page_count }}
-                                        </td>
+                                    <th>
+                                        {% trans "Sayfa Sayısı:" %}
+                                    </th>
+                                    <td>
+                                        {{ publication_detail.book.page_count }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>
@@ -66,16 +68,16 @@
                                         {{ publication_detail.book.book_language }}
                                     </td>
                                 </tr>
-                                {% if publication_detail.book.pdf%}
-                                <tr>
-                                    <th>
-                                        PDF:
-                                    </th>
-                                    <th>
-                                        <a href="{{ publication_detail.book.pdf.url }}">{% trans "Dosyayı Görmek İçin Tıklayınız" %}</a>
+                                {% if publication_detail.book.pdf %}
+                                    <tr>
+                                        <th>
+                                            PDF:
+                                        </th>
+                                        <th>
+                                            <a href="{{ publication_detail.book.pdf.url }}">{% trans "Dosyayı Görmek İçin Tıklayınız" %}</a>
 
-                                    </th>
-                                </tr>
+                                        </th>
+                                    </tr>
                                 {% endif %}
                                 <tr>
                                     <th>

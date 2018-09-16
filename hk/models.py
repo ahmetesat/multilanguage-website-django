@@ -1,7 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 import datetime
-
+from django.utils import translation
+from django.urls import reverse
+selected_language = translation.get_language()
 
 class All_Navbar_Sections(models.Model):  # Keeps the main navbar sections names
     name = models.CharField(max_length=25, unique=True, verbose_name="All Navbar Sections Name")
@@ -62,13 +64,15 @@ class Publication_Type(models.Model):
         verbose_name = "Publication Type"
         verbose_name_plural = "Publication Type"
 
-
 class About(models.Model):
     name = models.CharField(max_length=10, default='Hacı Kara', unique=True)
     section = models.ForeignKey(All_Navbar_Sections,
                                 verbose_name="Navbar Section*",
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='img/', blank=True, help_text="Not Obligatory", )
+
+    def get_absolute_url(self):
+        return reverse('About')
 
     def __str__(self):
         return "%s" % (self.name)  # In Admin Page see the name itself not as object
@@ -129,6 +133,7 @@ class Article(models.Model):
                                      verbose_name="Journal Title")  # Publisher of the article
 
     publisher = models.CharField(max_length=255,
+                                 blank=True,
                                  help_text="Publisher Name*",
                                  verbose_name="Publisher*", )  # Publisher of the article
 
@@ -184,6 +189,9 @@ class Article_Translation(models.Model):
         verbose_name = "Article Detail"
         verbose_name_plural = "Articles Details"
 
+    def get_absolute_url(self):
+        return reverse('Article_Detail', kwargs={'pk':self.article.pk, 'article_name':self.name})
+
 
 class Book(models.Model):
     name_bsc = models.CharField(max_length=255, unique=True, verbose_name="Name*")  # Name of the book
@@ -210,6 +218,7 @@ class Book(models.Model):
                                      help_text="Total Page Number")  # How many page is there
 
     publisher = models.CharField(max_length=255,
+                                 blank=True,
                                  help_text="Publisher Name*")  # Publisher of the book
 
     section = models.ForeignKey(All_Navbar_Sections,
@@ -252,6 +261,8 @@ class Book_Translation(models.Model):
         verbose_name = "Book Detail"
         verbose_name_plural = "Books Details"
 
+    def get_absolute_url(self):
+        return reverse('Book_Detail', kwargs={'pk':self.book.pk, 'book_name':self.name})
 
 class Course(models.Model):
     name_bsc = models.CharField(max_length=255, unique=True,
@@ -337,6 +348,8 @@ class Course_Translation(models.Model):
         verbose_name = "Course Details"
         verbose_name_plural = "Courses Details"
 
+    def get_absolute_url(self):
+        return reverse('Course_Detail', kwargs={'pk':self.course.pk, 'course_name':self.name})
 
 class Conference(models.Model):
     name = models.CharField(
