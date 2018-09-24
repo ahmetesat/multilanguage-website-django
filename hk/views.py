@@ -258,6 +258,9 @@ def contact(request):
     except:
         pass
 
+def terms_and_conditions(request):
+    return render(request,"terms_and_conditions.html")
+
 
 def contact_send_email(request):
     if request.method == "POST":

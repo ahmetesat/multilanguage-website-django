@@ -56,16 +56,16 @@
                 {#                        </form>#}
                 {#                    {% endfor %}#}
                 {#            </li>#}
-            <li class="nav-link">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
+                <li class="nav-link">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
 
-                <form id="myForm" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                    {% for lang in LANGUAGES %}
-                        <input class="navbar-language-button" type="submit" name="language" value="{{ lang.0 }}">
-                    {% endfor %}
-                </form>
-            </li>
+                    <form id="myForm" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        {% for lang in LANGUAGES %}
+                            <input class="navbar-language-button" type="submit" name="language" value="{{ lang.0 }}">
+                        {% endfor %}
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
@@ -84,15 +84,7 @@
                 <div class="social-media-icons">
                     <ul class="social-media-icon-list">
                         <li>
-                            <a href="#" title="Facebook">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x icon-background "></i>
-                            <i class="fa fa-facebook fa-stack-1x"></i>
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" title="Twitter">
+                            <a href="https://twitter.com/hacikaraus" title="Twitter">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x icon-background "></i>
                             <i class="fa fa-twitter fa-stack-1x"></i>
@@ -100,7 +92,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" title="Linkedin">
+                            <a href="https://tr.linkedin.com/in/hac%C4%B1-kara-2500183" title="Linkedin">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x icon-background "></i>
                             <i class="fa fa-linkedin fa-stack-1x"></i>
@@ -117,7 +109,7 @@
                 </div>
 
             </div>
-            <div class="col-md-4 order-2 order-md-1">asdasdasd</div>
+            <div class="col-md-4 order-2 order-md-1 text-white"></div>
 
             <div class=" col-md-4 order-3 order-md-3 footer-navigation">
                 <ul>
@@ -136,11 +128,11 @@
                 </ul>
             </div>
         </div>
-        <div class="row footer-row2">
+        <div class="row footer-row2 col-md-12">
             <div class="m-0 text-left text-white">Copyright &copy; {% now "Y" %} Hacı Kara
-                <a href="">{% trans "Gizlilik Politikası" %}</a>
-                <a href="">{% trans "Kullanım Koşulları" %}</a>
-                <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}">{% trans "Site Haritası" %}</a>
+                <a class="home-a-link" href="{% url 'terms-and-conditions' %}">{% trans "Şartlar Ve Koşullar" %}</a>
+                <a class="home-a-link">|</a>
+                <a class="home-a-link" href="{% url 'django.contrib.sitemaps.views.sitemap' %}">{% trans "Site Haritası" %}</a>
             </div>
         </div>
     </div>

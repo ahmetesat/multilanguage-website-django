@@ -47,7 +47,15 @@
                     </ul>
                     {% if konferans.conference_link %}
                         <ul>
-                            <li class="detail-link"><a href="{{ konferans.conference_link }}">{{ konferans.conference_link }}</a>
+                            <li class="detail-link"><a
+                                    href="{{ konferans.conference_link }}">{{ konferans.conference_link }}</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {% if konferans.conference_abstract %}
+                        <ul>
+                            <li>
+                                {{ konferans.conference_abstract|safe }}
                             </li>
                         </ul>
                     {% endif %}

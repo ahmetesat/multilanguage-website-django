@@ -5,6 +5,15 @@
 {% block content %}
 
     <div class="container common-container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">{% trans "Ana Sayfa" %}</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" onclick="window.history.back()">{% trans "Geri" %}</a>
+
+            </li>
+        </ol>
         {% for academic_detail in academic_info_detail %}
             <div class="row">
                 <div class="col-12">

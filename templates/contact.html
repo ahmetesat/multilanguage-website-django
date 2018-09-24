@@ -6,13 +6,18 @@
 
     <!-- Page Content -->
     <div class="container">
-        <!-- Contact Form -->
-        <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">{% trans "Ana Sayfa" %}</a>
+            </li>
+            <li class="breadcrumb-item active">{% trans "İletişim" %}</li>
+        </ol>
         <div class="row">
             <div class="col-lg-8 mb-4">
                 <h3>{% trans "İletişim" %}</h3>
-{#                action="{% url 'contact_send_email' %}"#}
-                <form action="{% url 'contact_send_email' %}" method="post" name="sentMessage" id="contactForm" novalidate>
+                {#                action="{% url 'contact_send_email' %}"#}
+                <form action="{% url 'contact_send_email' %}" method="post" name="sentMessage" id="contactForm"
+                      novalidate>
                     {% csrf_token %}
                     <div class="control-group form-group">
                         <div class="controls">

@@ -29,7 +29,8 @@ def get_env_variable(var_name):
         raise ImproperlyConfigured(error_msg)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('SECRET_KEY')
+SECRET_KEY = '6a@%uo^-24p$=qqe$kx)8pq)9c)fc-n%71fisiq85gpqkx1qn1'
+    # get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

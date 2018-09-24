@@ -84,7 +84,10 @@ urlpatterns += i18n_patterns(
     url(_(r'^arastirma-alanlari/$'), research_interest_detail, name="research_interest_detail"),
 
     url(_(r'^iletisim/$'), contact, name="Contact"),
-    url(_(r'^iletisim-mail-gonder/$'), contact_send_email, name="contact_send_email")
+    url(_(r'^iletisim-mail-gonder/$'), contact_send_email, name="contact_send_email"),
+
+    url(_(r'^sartlar-ve-kasullar/$'), terms_and_conditions, name="terms-and-conditions")
+
 )
 
 if settings.DEBUG:

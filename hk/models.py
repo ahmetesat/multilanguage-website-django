@@ -89,7 +89,7 @@ class About_Translation(models.Model):
                                          verbose_name="Website Language*",
                                          default=0,  # Default is tr
                                          on_delete=models.CASCADE)
-    about_description = RichTextField()
+    about_description = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s" % (self.about.name)  # In Admin Page see the name itself not as object
@@ -180,7 +180,7 @@ class Article_Translation(models.Model):
                                          default=0,  # Default is tr
                                          on_delete=models.CASCADE)  # website language
 
-    article_abstract = RichTextField()
+    article_abstract = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s_%s" % (self.name, self.website_language.language)  # In Admin Page see the name itself not as object
@@ -252,7 +252,7 @@ class Book_Translation(models.Model):
                                          default=0,  # Default is tr
                                          on_delete=models.CASCADE)  # website language
 
-    book_abstract = RichTextField()
+    book_abstract = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s_%s" % (self.name, self.website_language.language)  # In Admin Page see the name itself not as object
@@ -339,7 +339,7 @@ class Course_Translation(models.Model):
                                          default=0,  # Default is tr
                                          on_delete=models.CASCADE)  # website language
 
-    course_abstract = RichTextField()
+    course_abstract = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s_%s" % (self.name, self.website_language.language)  # In Admin Page see the name itself not as object
@@ -371,6 +371,7 @@ class Conference(models.Model):
         help_text="Conference Link(Not Obligatory)",
         verbose_name="Conference Link(Not Obligatory)")
     date = models.DateField(default=datetime.date.today)  # Conference Date
+    conference_abstract = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s" % (self.name)  # In Admin Page see the name itself not as object
@@ -400,7 +401,7 @@ class Internet_Publication(models.Model):
         help_text="Website Link",
         verbose_name="Website Link"
     )
-    article_content = RichTextField()
+    article_content = RichTextField(blank=True, null=True)
 
     def __str__(self):
         return "%s" % (self.name)  # In Admin Page see the name itself not as object
