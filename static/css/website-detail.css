@@ -5,10 +5,8 @@
     background-color: #ff6548;
 }
 
-/*Main Navbar icon style*/
-
-.navbar-links {
-    padding-top: 2%;
+.dropdown-item{
+    color: black!important;
 }
 
 /*back-homepage Navbar */
@@ -34,7 +32,7 @@
 .publicationHeadLine h2,
 .terms_conditions h2,
 .terms_conditions p,
-.terms_conditions li {
+.terms_conditions li, .about_hk  {
     font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -56,7 +54,7 @@
     color: black;
 }
 
-.body1-table td, .body1-table li p, .research-interests {
+.body1-table td, .body1-table li p, .research-interests{
     font-family: 'HelveticaNeueW01-55Roma', 'Helvetica LT Std Light', 'Helvetica Neue LT Std', Helvetica;
     color: black;
 }
@@ -78,6 +76,9 @@
 
 html, body {
     height: 100%;
+}
+.page-wrap{
+    min-height: 100%;
 }
 
 /*.page-wrap {*/
@@ -149,7 +150,7 @@ html, body {
 
 /*START------------------INLINE NAVBAR------------------START*/
 .scrolling-wrapper {
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -225,8 +226,12 @@ html, body {
 }
 
 /*END------------------ICONS------------------END*/
+.footer-sentence{
+    display: inline-block;
+    padding-bottom: 30px;
+}
 
-.footer-navigation {
+.footer-navigation, .footer-sentence {
     text-align: center;
 }
 
@@ -241,9 +246,26 @@ html, body {
     color: white;
 }
 
-.site-footer .footer-row1 {
+.site-footer{
+    position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+/*.site-footer{*/
+    /*margin: 0;*/
+    /*padding-bottom: 0;*/
+/*}*/
+
+/*.site-footer .footer-row1 {*/
+    /*padding-top: 50px;*/
+    /*padding-bottom: 50px;*/
+
+/*}*/
+.footer-row1 {
     padding-top: 50px;
-    padding-bottom: 50px;
 }
 
 .footer-row2 {

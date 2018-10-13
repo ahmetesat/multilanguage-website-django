@@ -4,11 +4,11 @@
 
 {% block content %}
     <!-- Page Content -->
-    <div class="container">
+    <div class="container common-container">
 
         <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">{% trans "Hakkında" %}
-        </h1>
+        <h3 class="my-4">{% trans "Hakkında" %}
+        </h3>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -21,10 +21,11 @@
         <div class="row">
             {% for foo in author_info %}
                 <div class="col-lg-6">
-                    <img class="img-fluid rounded mb-4" src="{{ foo.about.image.url }}" alt="About Picture">
+                    {% if foo.about.image %}
+                        <img class="img-fluid rounded mb-4" src="{{ foo.about.image.url }}" alt="About Picture">
+                    {% endif %}
                 </div>
-                <div class="col-lg-6">
-                    <h2>{{ foo.about.name }}</h2>
+                <div class="col-lg-6 about_hk ">
                     <p>{{ foo.about_description | safe }}</p>
                 </div>
             {% endfor %}

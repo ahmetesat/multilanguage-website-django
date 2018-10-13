@@ -71,6 +71,12 @@ class About(models.Model):
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='img/', blank=True, help_text="Not Obligatory", )
 
+    pdf = models.FileField(upload_to='pdf/',
+                           help_text="Not Obligatory-CV",
+                           verbose_name="PDF(Not Obligatory)",
+                           blank=True,
+                           max_length=250)
+
     def get_absolute_url(self):
         return reverse('About')
 
@@ -183,7 +189,7 @@ class Article_Translation(models.Model):
     article_abstract = RichTextField(blank=True, null=True)
 
     def __str__(self):
-        return "%s_%s" % (self.name, self.website_language.language)  # In Admin Page see the name itself not as object
+        return "%s_%s" % (self.article.name_bsc, self.website_language.language)  # In Admin Page see the name itself not as object
 
     class Meta:
         verbose_name = "Article Detail"
@@ -420,7 +426,8 @@ class Supervised_Thesis(models.Model):
     thesis_owner = models.CharField(
         max_length=40,
         verbose_name="Thesis Owner Name")  # Name of the thesis
-
+    start_date = models.DateField(default=datetime.date.today, verbose_name="Start Date")
+    end_date = models.DateField(default=datetime.date.today, verbose_name="End Date")
     year = models.CharField(
         max_length=20,
         help_text="EX: 2018, 2015 - 2018",

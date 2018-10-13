@@ -28,9 +28,10 @@ def get_env_variable(var_name):
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '6a@%uo^-24p$=qqe$kx)8pq)9c)fc-n%71fisiq85gpqkx1qn1'
-    # get_env_variable('SECRET_KEY')
+# get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'hk',
     'ckeditor',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,8 +91,12 @@ WSGI_APPLICATION = 'multilanguage-website-django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'db_admin',
+        'PASSWORD': '123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 
@@ -120,8 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
-    ('en', _('English')),
     ('tr', _('Turkish')),
+    ('en', _('English')),
+
 )
 
 LANGUAGE_CODE = 'tr'
@@ -158,7 +163,5 @@ EMAIL_HOST_USER = 'cphesap@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
-
 
 # CKEDITOR_BASEPATH = os.path.join(BASE_DIR, 'translations'),

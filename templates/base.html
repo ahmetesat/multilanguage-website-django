@@ -40,22 +40,36 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item navbar-links">
+                <li class="nav-link">
                     <a class="nav-link" style="color: black" href="{% url 'About' %}">{% trans "Hakkında" %}</a>
                 </li>
-                <li class="nav-item navbar-links">
-                    <a class="nav-link" style="color: black" href="{% url 'Articles' %}">{% trans "Yayınlar" %}</a>
+                <li class="nav-link dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdownPortfolio"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans "Yayınlar" %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="{% url 'Articles' %}">{% trans "Makaleler" %}</a>
+                        <a class="dropdown-item" href="{% url 'Books' %}">{% trans "Kitaplar" %}</a>
+                    </div>
                 </li>
-                {#                <li class="nav-item">#}
-                {#                <li class="nav-link" >#}
-                {#                    {% get_current_language as LANGUAGE_CODE %}#}
-                {#                    {% get_available_languages as LANGUAGES %}#}
-                {#                    {% for lang in LANGUAGES %}#}
-                {#                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}#}
-                {#                            <input type="submit" name="language" value="{{ lang.0 }}">#}
-                {#                        </form>#}
-                {#                    {% endfor %}#}
-                {#            </li>#}
+                <li class="nav-link dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdownPortfolio"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans "Akademik Hayat" %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="{% url 'Courses' %}">{% trans "Dersler" %}</a>
+                        <a class="dropdown-item" href="{% url 'Conferences' %}">{% trans "Konferanslar" %}</a>
+                        <a class="dropdown-item"
+                           href="{% url 'Supervised_Thesis' %}">{% trans "Tez Danışmanlığı" %}</a>
+                        <a class="dropdown-item"
+                           href="{% url 'Thesis_Jury_Membership' %}">{% trans "Tez Jüri Üyeliği" %}</a>
+                    </div>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link" style="color: black" href="{% url 'research_interest_detail' %}">{% trans "Araştırma Alanları" %}</a>
+                </li>
                 <li class="nav-link">
                     {% get_current_language as LANGUAGE_CODE %}
                     {% get_available_languages as LANGUAGES %}
@@ -77,7 +91,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="site-footer " style="background-color: black">
+<footer class="site-footer" style="background-color: black">
     <div class="container">
         <div class="row footer-row1">
             <div class="col-md-4 order-1 order-md-2 ">
@@ -109,30 +123,33 @@
                 </div>
 
             </div>
-            <div class="col-md-4 order-2 order-md-1 text-white"></div>
+            <div class="col-md-4 order-2 order-md-1 text-white footer-sentence">{% trans "Hacı Kara'nın kişisel websitesine hoş geldiniz" %}</div>
 
             <div class=" col-md-4 order-3 order-md-3 footer-navigation">
                 <ul>
                     <li>
-                        <a>{% trans "Hakkında" %}</a>
+                        <a class="home-a-link" href="{% url 'About' %}">{% trans "Hakkında" %}</a>
                     </li>
                     <li>
-                        <a>{% trans "Yayınlar" %}</a>
+                        <a class="home-a-link" href="{% url 'Articles' %}">{% trans "Yayınlar" %}</a>
                     </li>
                     <li>
-                        <a>{% trans "Akademik Hayat" %}</a>
+                        <a class="home-a-link" href="{% url 'Courses' %}">{% trans "Akademik Hayat" %}</a>
                     </li>
                     <li>
-                        <a>{% trans "Araştırma Alanları" %}</a>
+                        <a class="home-a-link"
+                           href="{% url 'research_interest_detail' %}">{% trans "Araştırma Alanları" %}</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="row footer-row2 col-md-12">
-            <div class="m-0 text-left text-white">Copyright &copy; {% now "Y" %} Hacı Kara
+            <div class="m-0 text-left text-white">Copyright &copy; {% now "Y" %} Bu site Hacı Kara için
+                <a class="home-a-link" href="www.ahmetesatkara.com">Ahmet Esat Kara</a> tarafından dizayn edilmiştir.
                 <a class="home-a-link" href="{% url 'terms-and-conditions' %}">{% trans "Şartlar Ve Koşullar" %}</a>
                 <a class="home-a-link">|</a>
-                <a class="home-a-link" href="{% url 'django.contrib.sitemaps.views.sitemap' %}">{% trans "Site Haritası" %}</a>
+                <a class="home-a-link"
+                   href="{% url 'django.contrib.sitemaps.views.sitemap' %}">{% trans "Site Haritası" %}</a>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-24 21:41+0000\n"
+"POT-Creation-Date: 2018-10-13 09:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multilanguage-website-django/settings.py:123
-msgid "English"
+#: multilanguage-website-django/settings.py:127
+msgid "Turkish"
 msgstr ""
 
-#: multilanguage-website-django/settings.py:124
-msgid "Turkish"
+#: multilanguage-website-django/settings.py:128
+msgid "English"
 msgstr ""
 
 #: multilanguage-website-django/urls.py:57
@@ -45,16 +45,6 @@ msgstr "^publications/books/$"
 #: multilanguage-website-django/urls.py:66
 msgid "^yayinlar/kitaplar/detay/(?P<pk>\\d+)/(?P<book_name>[\\w\\s]+)/$"
 msgstr "^publications/books/detail/(?P<pk>\\d+)/(?P<book_name>[\\w\\s]+)/$"
-
-#: multilanguage-website-django/urls.py:68
-msgid "^yayinlar/internet-yayinlari/$"
-msgstr "^publications/internet-publications/$"
-
-#: multilanguage-website-django/urls.py:70
-msgid ""
-"^yayinlar/internet-yayinlari/detay/(?P<pk>\\d+)/(?"
-"P<internet_pub_artic_name>[\\w\\s]+)/$"
-msgstr ""
 
 #: multilanguage-website-django/urls.py:73
 msgid "^akademik/kurslar/$"
@@ -118,7 +108,7 @@ msgstr "Page Not Found"
 
 #: templates/404.html:14
 msgid "Ulaşmak İstediğiniz Sayfaya Veri Tabanında Ulaşılamadı"
-msgstr "Couldn't Find Page In The Server  "
+msgstr "Couldn't Find Page In The Server"
 
 #: templates/500.html:12
 msgid "Sunucu Hatası"
@@ -129,7 +119,7 @@ msgid "Sunucu Belirlenemeyen Bir Problemle Karşılaştı"
 msgstr "Unexpected Problem Occured In The Server"
 
 #: templates/about.html:10 templates/about.html:17 templates/base.html:44
-#: templates/base.html:117 templates/home.html:30
+#: templates/base.html:131 templates/home.html:30
 msgid "Hakkında"
 msgstr "About"
 
@@ -198,24 +188,17 @@ msgstr "Click To See"
 msgid "Açıklama:"
 msgstr "Abstract:"
 
-#: templates/articles.html:11 templates/articles.html:29
+#: templates/articles.html:11 templates/articles.html:29 templates/base.html:52
 #: templates/books.html:11 templates/internet_publications.html:11
 msgid "Makaleler"
 msgstr "Articles"
 
-#: templates/articles.html:16 templates/books.html:16 templates/books.html:29
-#: templates/internet_publications.html:16
+#: templates/articles.html:16 templates/base.html:53 templates/books.html:16
+#: templates/books.html:29 templates/internet_publications.html:16
 msgid "Kitaplar"
 msgstr "Books"
 
-#: templates/articles.html:21 templates/books.html:21
-#: templates/internet_publications.html:21
-#: templates/internet_publications.html:29
-msgid "İnternet Yayınları"
-msgstr "Internet Publications"
-
 #: templates/articles.html:37 templates/supervised_thesis.html:46
-#: templates/thesis_jury_membership.html:47
 msgid "Makale Adı:"
 msgstr "Article Name:"
 
@@ -223,28 +206,62 @@ msgstr "Article Name:"
 msgid "Doç. Dr."
 msgstr "Assoc. Prof. Dr."
 
-#: templates/base.html:47 templates/base.html:120 templates/home.html:40
+#: templates/base.html:49 templates/base.html:134 templates/home.html:39
 msgid "Yayınlar"
 msgstr "Publications"
 
-#: templates/base.html:107 templates/contact.html:13 templates/contact.html:17
-msgid "İletişim"
-msgstr "Contact"
-
-#: templates/base.html:123 templates/home.html:50
+#: templates/base.html:59 templates/base.html:137 templates/home.html:47
 msgid "Akademik Hayat"
 msgstr "Academic Life"
 
-#: templates/base.html:126 templates/home.html:60
+#: templates/base.html:62 templates/conferences.html:12
+#: templates/courses.html:12 templates/supervised_thesis.html:11
+#: templates/thesis_jury_membership.html:12
+msgid "Dersler"
+msgstr "Courses"
+
+#: templates/base.html:63 templates/conferences.html:17
+#: templates/conferences.html:36 templates/courses.html:17
+#: templates/supervised_thesis.html:16 templates/thesis_jury_membership.html:17
+msgid "Konferanslar"
+msgstr "Conferences"
+
+#: templates/base.html:65 templates/conferences.html:22
+#: templates/courses.html:22 templates/supervised_thesis.html:21
+#: templates/supervised_thesis.html:35 templates/thesis_jury_membership.html:22
+#, fuzzy
+#| msgid "Makale Danışmanlığı"
+msgid "Tez Danışmanlığı"
+msgstr "Supervised Thesis"
+
+#: templates/base.html:67 templates/conferences.html:27
+#: templates/courses.html:27 templates/supervised_thesis.html:26
+#: templates/thesis_jury_membership.html:27
+#, fuzzy
+#| msgid "Makale Jüri Üyeliği"
+msgid "Tez Jüri Üyeliği"
+msgstr "Article Jury Membership"
+
+#: templates/base.html:71 templates/base.html:141 templates/home.html:56
 #: templates/research_interests.html:10 templates/research_interests.html:17
 msgid "Araştırma Alanları"
 msgstr "Research Interests"
 
-#: templates/base.html:133 templates/terms_and_conditions.html:12
+#: templates/base.html:121 templates/contact.html:13 templates/contact.html:17
+msgid "İletişim"
+msgstr "Contact"
+
+#: templates/base.html:126
+#, fuzzy
+#| msgid "Haci Kara'nın kişisel websitesine hoş geldiniz"
+msgid "Hacı Kara'nın kişisel websitesine hoş geldiniz"
+msgstr "Welcome to the personal website of Hacı Kara"
+
+#: templates/base.html:149 templates/terms_and_conditions.html:12
 msgid "Şartlar Ve Koşullar"
 msgstr "Terms and Conditions"
 
-#: templates/base.html:135
+#: templates/base.html:152
 msgid "Site Haritası"
 msgstr "Site Map"
 
@@ -255,28 +272,6 @@ msgstr "Page Count:"
 #: templates/books.html:37
 msgid "Kitap Adı:"
 msgstr "Book Name:"
-
-#: templates/conferences.html:12 templates/courses.html:12
-#: templates/supervised_thesis.html:11 templates/thesis_jury_membership.html:12
-msgid "Dersler"
-msgstr "Courses"
-
-#: templates/conferences.html:17 templates/conferences.html:36
-#: templates/courses.html:17 templates/supervised_thesis.html:16
-#: templates/thesis_jury_membership.html:17
-msgid "Konferanslar"
-msgstr "Conferences"
-
-#: templates/conferences.html:22 templates/courses.html:22
-#: templates/supervised_thesis.html:21 templates/supervised_thesis.html:35
-#: templates/thesis_jury_membership.html:22
-msgid "Makale Danışmanlığı"
-msgstr "Supervised Thesis"
-
-#: templates/conferences.html:27 templates/courses.html:27
-#: templates/supervised_thesis.html:26 templates/thesis_jury_membership.html:27
-msgid "Makale Jüri Üyeliği"
-msgstr "Article Jury Membership"
 
 #: templates/contact.html:24
 msgid "Ad - Soyad:"
@@ -337,19 +332,41 @@ msgstr "Welcome"
 
 #: templates/internet_publication_detail.html:47
 msgid "Website Adı:"
-msgstr "Website Name"
+msgstr "Website Name:"
 
 #: templates/internet_publication_detail.html:58
 msgid "Website Link:"
 msgstr "Website Link"
 
-#: templates/supervised_thesis.html:43 templates/thesis_jury_membership.html:44
+#: templates/internet_publications.html:21
+#: templates/internet_publications.html:29
+msgid "İnternet Yayınları"
+msgstr "Internet Publications"
+
+#: templates/supervised_thesis.html:43
 msgid "Makale Sahibi:"
 msgstr "Article Owner:"
 
+#: templates/thesis_jury_membership.html:44
+#, fuzzy
+#| msgid "Makale Sahibi:"
+msgid "Tez Sahibi:"
+msgstr "Article Owner:"
+
+#: templates/thesis_jury_membership.html:47
+#, fuzzy
+#| msgid "Makale Adı:"
+msgid "Tez Adı:"
+msgstr "Article Name:"
+
 #: templates/thesis_jury_membership.html:53
-msgid "Makale Türü:"
+#, fuzzy
+#| msgid "Makale Türü:"
+msgid "Tez Türü:"
 msgstr "Article Type:"
+
+#~ msgid "^yayinlar/internet-yayinlari/$"
+#~ msgstr "^publications/internet-publications/$"
 
 #~ msgid "Gizlilik Politikası"
 #~ msgstr "Privacy Policy"

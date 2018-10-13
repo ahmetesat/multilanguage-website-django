@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
 
-            <a href="{% url 'About' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="{% url 'About' %}"><img class="card-img-top" src="{% static 'pictures/about-base.jpg'%}" alt="Hakkında"></a>
             <div class="card-body">
               <h4 class="card-title" style="text-align: center">
                 <a class="home-a-link" href="{% url 'About' %}">{% trans "Hakkında" %}</a>
@@ -33,34 +33,29 @@
 
         </div>
        <div class="col-lg-4 col-sm-6 portfolio-item">
-
-            <a href="{% url 'Articles' %}"><img class="card-img-top" src="{% static 'pictures/yayinlar.JPG'%}" alt="yayinlar"></a>
+            <a href="{% url 'Articles' %}"><img class="card-img-top" src="{% static 'pictures/yayinlar.jpeg'%}" alt="Yayinlar"></a>
             <div class="card-body">
               <h4 class="card-title" style="text-align: center">
                 <a href="{% url 'Articles' %}">{% trans "Yayınlar" %}</a>
               </h4>
             </div>
-
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
-
-            <a href="{% url 'Courses' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="{% url 'Courses' %}"><img class="card-img-top" src="{% static 'pictures/academic-life.jpeg'%}" alt="Akademic Hayat"></a>
             <div class="card-body">
               <h4 class="card-title" style="text-align: center">
                 <a href="{% url 'Courses' %}">{% trans "Akademik Hayat" %}</a>
               </h4>
             </div>
-
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
 
-            <a href="{% url 'research_interest_detail' %}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="{% url 'research_interest_detail' %}"><img class="card-img-top" src="{% static 'pictures/arastirma-alanlari.jpg'%}" alt="Arastirma Alanlari"></a>
             <div class="card-body">
               <h4 class="card-title" style="text-align: center">
                 <a href="{% url 'research_interest_detail' %}"> {% trans "Araştırma Alanları" %}</a>
               </h4>
             </div>
-
         </div>
 
       </div>

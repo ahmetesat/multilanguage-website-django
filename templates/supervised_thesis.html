@@ -18,12 +18,12 @@
             </div>
             <div class="div-base-navbar-section">
                 <a class="a-base-navbar-section current" href="{% url 'Supervised_Thesis' %}">
-                    <span>{% trans "Makale Danışmanlığı" %}</span>
+                    <span>{% trans "Tez Danışmanlığı" %}</span>
                 </a>
             </div>
             <div class="div-base-navbar-section">
                 <a class="a-base-navbar-section" href="{% url 'Thesis_Jury_Membership' %}">
-                    <span>{% trans "Makale Jüri Üyeliği" %}</span>
+                    <span>{% trans "Tez Jüri Üyeliği" %}</span>
                 </a>
             </div>
         </div>
@@ -32,7 +32,7 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h3 class="my-4">{% trans "Makale Danışmanlığı"%}</h3>
+        <h3 class="my-4">{% trans "Tez Danışmanlığı"%}</h3>
         <div class="row">
 
             <div class="table-responsive">
@@ -60,7 +60,7 @@
                                 {{ academic.name }}
                             </td>
                             <td>
-                                {{ academic.year }}
+                                {{ academic.start_date | date:"Y" }} - {{ academic.end_date | date:"Y" }}
                             </td>
                         </tr>
                     {% endfor %}
