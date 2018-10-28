@@ -39,30 +39,26 @@
                 <div class="col-12">
                     <ul class="body1-table">
                         <li>
-                            <p>{{ konferans.name }}</p>
+                            <p><b>{{ konferans.name }}</b></p>
                             <p>{{ konferans.participants.all |join:", " }} </p>
                             <p>{{ konferans.institution }}</p>
                             <p>{{ konferans.date | date:"M Y" }}</p>
-                        </li>
+                            {% if konferans.conference_link %}
+                                <p class="detail-link">
+                                    <a href="{{ konferans.conference_link }}">
+                                        {{ konferans.conference_link }}
+                                    </a>
+                                </p>
+                            {% endif %}
+                            {% if konferans.conference_abstract %}
+                                <p>
+                                    {{ konferans.conference_abstract|safe }}
+                                </p>
+                            {% endif %}
                     </ul>
-                    {% if konferans.conference_link %}
-                        <ul>
-                            <li class="detail-link"><a
-                                    href="{{ konferans.conference_link }}">{{ konferans.conference_link }}</a>
-                            </li>
-                        </ul>
-                    {% endif %}
-                    {% if konferans.conference_abstract %}
-                        <ul>
-                            <li>
-                                {{ konferans.conference_abstract|safe }}
-                            </li>
-                        </ul>
-                    {% endif %}
                 </div>
                 <br>
             {% endfor %}
-
         </div>
     </div>
 

@@ -1,2 +1,11 @@
 User-agent: *
-Disallow: /
+Disallow: /admin
+Disallow: /settings/
+
+Disallow: /*.pdf
+Disallow: /*.ppt
+Disallow: /*.doc
+Disallow: /*.xls
+Disallow: /*.txt
+
+Sitemap: /sitemap.xml

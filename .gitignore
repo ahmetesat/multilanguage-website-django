@@ -1,7 +1,9 @@
-.settings
 __pycache__
 *.py[cod]
 *.pyc
+
+multilanguage-website-django/settings/development.py
+multilanguage-website-django/settings/production.py
 
 venv/
 media/

@@ -27,6 +27,10 @@
                 </div>
                 <div class="col-lg-6 about_hk ">
                     <p>{{ foo.about_description | safe }}</p>
+                    <br>
+                    {% if foo.about.pdf %}
+                        <a href="{{ foo.about.pdf.url }}">{% trans "CV'yi Görüntülemek İçin Tıklayınız" %}</a>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

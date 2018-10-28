@@ -20,16 +20,18 @@
       <!-- Intro Content -->
       <div class="row">
         <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
+          <img class="img-fluid rounded mb-4" src="{% static 'pictures/arastirma-alanlari.jpg'%}"
+               alt="Arastirma-alanlari">
         </div>
         <div class="col-lg-6 research-interests">
             {% for interest in research_interest %}
-                <p>{{ interest.name}}</p>
+                {% if interest.research_interest_content %}
+                    <p>{{ interest.research_interest_content|safe }}</p>
+                {% endif %}
             {% endfor %}
         </div>
       </div>
       <!-- /.row -->
-
     </div>
     <!-- /.container -->
 

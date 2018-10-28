@@ -5,8 +5,13 @@
     background-color: #ff6548;
 }
 
-.dropdown-item{
-    color: black!important;
+.main-navbar-hover:hover {
+    color: white !important;
+    background-color: #ff6548 !important;
+}
+
+.dropdown-item {
+    color: black !important;
 }
 
 /*back-homepage Navbar */
@@ -19,20 +24,20 @@
     padding-top: 5%;
 }
 
-.welcome{
-    font-family:medium-marketing-display-font,Georgia,Cambria,"Times New Roman",Times,serif!important;
+.welcome {
+    font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif !important;
     font-weight: normal;
     color: black;
 }
 
-.home-a-link{
+.home-a-link {
     color: #3379be;
 }
 
 .publicationHeadLine h2,
 .terms_conditions h2,
 .terms_conditions p,
-.terms_conditions li, .about_hk  {
+.terms_conditions li, .about_hk {
     font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeue Bold', 'Helvetica LT Std Bold', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -54,7 +59,7 @@
     color: black;
 }
 
-.body1-table td, .body1-table li p, .research-interests{
+.body1-table td, .body1-table li p, .research-interests {
     font-family: 'HelveticaNeueW01-55Roma', 'Helvetica LT Std Light', 'Helvetica Neue LT Std', Helvetica;
     color: black;
 }
@@ -77,7 +82,8 @@
 html, body {
     height: 100%;
 }
-.page-wrap{
+
+.page-wrap {
     min-height: 100%;
 }
 
@@ -226,7 +232,7 @@ html, body {
 }
 
 /*END------------------ICONS------------------END*/
-.footer-sentence{
+.footer-sentence {
     display: inline-block;
     padding-bottom: 30px;
 }
@@ -246,22 +252,22 @@ html, body {
     color: white;
 }
 
-.site-footer{
+.site-footer {
     position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
 }
 
 /*.site-footer{*/
-    /*margin: 0;*/
-    /*padding-bottom: 0;*/
+/*margin: 0;*/
+/*padding-bottom: 0;*/
 /*}*/
 
 /*.site-footer .footer-row1 {*/
-    /*padding-top: 50px;*/
-    /*padding-bottom: 50px;*/
+/*padding-top: 50px;*/
+/*padding-bottom: 50px;*/
 
 /*}*/
 .footer-row1 {
@@ -278,3 +284,14 @@ html, body {
 }
 
 /*END------------------ICONS------------------END*/
+
+/*START------------------Bootstrap Changes------------------START*/
+div.alert.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/*END------------------Bootstrap Changes------------------END*/
+
+

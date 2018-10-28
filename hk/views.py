@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect, render_to_response
-from django.utils import translation
+from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage, BadHeaderError
+from django.utils.translation import ugettext as _
 import logging
 from django.db.models import F
 from django.conf import settings
 
 from hk.models import *
 from hk.forms import ContactForm
-from django.template import RequestContext
 
-from django.template import Template, Context, loader
 # Create your views here.
 
 from django.http import HttpResponse, HttpResponseRedirect
@@ -245,7 +244,8 @@ def research_interest_detail(request):
                 website_language__language=selected_language)
 
             if not research_interest:
-                pass
+                research_interest = Research_Interest_Translation.objects.filter(
+                    website_language__language="tr")
 
             return render(request, "research_interests.html", {"research_interest": research_interest})
 
@@ -265,25 +265,21 @@ def terms_and_conditions(request):
 def contact_send_email(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
-            print("form valid")
             full_name = form.cleaned_data['full_name']
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             subject = "HK Website Contact - %s - %s" % (full_name, from_email)
-
             try:
-                email = EmailMessage(subject, message, from_email, ['cphesap@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
-                # send() sends the email
+                email = EmailMessage(subject, message, from_email, ['hacikaramail@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
                 email.send()
-
-                # send_mail(subject, message, from_email, ['cphesap@gmail.com'], headers = {'Reply-To': from_email}) #CC ?
-                print(1)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('home')
-    return redirect('home')
+            except:
+                messages.error(request, _('Mailiniz gönderilirken bir hata oluştu!'))
+                return render(request, "contact.html")
+            messages.success(request, _('Mailiniz başarılı bir şekilde gönderildi!'))
+        else:
+            messages.warning(request, _('Tüm alanların doğru doldurulduğundan emin olun!'))
+    return render(request, "contact.html")
 
 
 

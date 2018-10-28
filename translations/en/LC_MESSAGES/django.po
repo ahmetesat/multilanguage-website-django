@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-13 09:13+0000\n"
+"POT-Creation-Date: 2018-10-28 10:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: multilanguage-website-django/settings.py:127
+#: hk/views.py:277
+msgid "Mailiniz gönderilirken bir hata oluştu!"
+msgstr "An error occurred while sending your mail!"
+
+#: hk/views.py:279
+msgid "Mailiniz başarılı bir şekilde gönderildi!"
+msgstr "Your mail was successfully sent!"
+
+#: hk/views.py:281
+msgid "Tüm alanların doğru doldurulduğundan emin olun!"
+msgstr "Be sure that boxes filled correctly!"
+
+#: multilanguage-website-django/settings/base.py:86
 msgid "Turkish"
 msgstr ""
 
-#: multilanguage-website-django/settings.py:128
+#: multilanguage-website-django/settings/base.py:87
 msgid "English"
 msgstr ""
 
@@ -118,8 +130,8 @@ msgstr "Server Error"
 msgid "Sunucu Belirlenemeyen Bir Problemle Karşılaştı"
 msgstr "Unexpected Problem Occured In The Server"
 
-#: templates/about.html:10 templates/about.html:17 templates/base.html:44
-#: templates/base.html:131 templates/home.html:30
+#: templates/about.html:10 templates/about.html:17 templates/base.html:57
+#: templates/base.html:147 templates/home.html:30
 msgid "Hakkında"
 msgstr "About"
 
@@ -130,11 +142,13 @@ msgstr "About"
 msgid "Ana Sayfa"
 msgstr "Homepage"
 
+#: templates/about.html:32
+msgid "CV'yi Görüntülemek İçin Tıklayınız"
+msgstr "Click To See CV"
+
 #: templates/article_detail.html:13 templates/book_detail.html:13
 #: templates/course_detail.html:13
 #: templates/internet_publication_detail.html:12
-#, fuzzy
-#| msgid "Geri Dön"
 msgid "Geri"
 msgstr "Back"
 
@@ -188,12 +202,12 @@ msgstr "Click To See"
 msgid "Açıklama:"
 msgstr "Abstract:"
 
-#: templates/articles.html:11 templates/articles.html:29 templates/base.html:52
+#: templates/articles.html:11 templates/articles.html:29 templates/base.html:66
 #: templates/books.html:11 templates/internet_publications.html:11
 msgid "Makaleler"
 msgstr "Articles"
 
-#: templates/articles.html:16 templates/base.html:53 templates/books.html:16
+#: templates/articles.html:16 templates/base.html:67 templates/books.html:16
 #: templates/books.html:29 templates/internet_publications.html:16
 msgid "Kitaplar"
 msgstr "Books"
@@ -202,66 +216,71 @@ msgstr "Books"
 msgid "Makale Adı:"
 msgstr "Article Name:"
 
-#: templates/base.html:35
+#: templates/base.html:48
 msgid "Doç. Dr."
 msgstr "Assoc. Prof. Dr."
 
-#: templates/base.html:49 templates/base.html:134 templates/home.html:39
+#: templates/base.html:62 templates/base.html:150 templates/home.html:39
 msgid "Yayınlar"
 msgstr "Publications"
 
-#: templates/base.html:59 templates/base.html:137 templates/home.html:47
+#: templates/base.html:73 templates/base.html:153 templates/home.html:47
 msgid "Akademik Hayat"
 msgstr "Academic Life"
 
-#: templates/base.html:62 templates/conferences.html:12
+#: templates/base.html:76 templates/conferences.html:12
 #: templates/courses.html:12 templates/supervised_thesis.html:11
 #: templates/thesis_jury_membership.html:12
 msgid "Dersler"
 msgstr "Courses"
 
-#: templates/base.html:63 templates/conferences.html:17
+#: templates/base.html:78 templates/conferences.html:17
 #: templates/conferences.html:36 templates/courses.html:17
 #: templates/supervised_thesis.html:16 templates/thesis_jury_membership.html:17
 msgid "Konferanslar"
 msgstr "Conferences"
 
-#: templates/base.html:65 templates/conferences.html:22
+#: templates/base.html:80 templates/conferences.html:22
 #: templates/courses.html:22 templates/supervised_thesis.html:21
 #: templates/supervised_thesis.html:35 templates/thesis_jury_membership.html:22
-#, fuzzy
-#| msgid "Makale Danışmanlığı"
 msgid "Tez Danışmanlığı"
 msgstr "Supervised Thesis"
 
-#: templates/base.html:67 templates/conferences.html:27
+#: templates/base.html:82 templates/conferences.html:27
 #: templates/courses.html:27 templates/supervised_thesis.html:26
 #: templates/thesis_jury_membership.html:27
-#, fuzzy
-#| msgid "Makale Jüri Üyeliği"
 msgid "Tez Jüri Üyeliği"
 msgstr "Article Jury Membership"
 
-#: templates/base.html:71 templates/base.html:141 templates/home.html:56
+#: templates/base.html:87 templates/base.html:157 templates/home.html:56
 #: templates/research_interests.html:10 templates/research_interests.html:17
 msgid "Araştırma Alanları"
 msgstr "Research Interests"
 
-#: templates/base.html:121 templates/contact.html:13 templates/contact.html:17
+#: templates/base.html:137 templates/contact.html:13 templates/contact.html:31
 msgid "İletişim"
 msgstr "Contact"
 
-#: templates/base.html:126
-#, fuzzy
-#| msgid "Haci Kara'nın kişisel websitesine hoş geldiniz"
+#: templates/base.html:142
 msgid "Hacı Kara'nın kişisel websitesine hoş geldiniz"
-msgstr "Welcome to the personal website of Hacı Kara"
+msgstr "Welcome to the personal website of Haci Kara"
 
-#: templates/base.html:149 templates/terms_and_conditions.html:12
+#: templates/base.html:163
+msgid ""
+" Bu site Hacı Kara için\n"
+"                <a class=\"home-a-link\" href=\"http://www.ahmetesatkara.com"
+"\" target=\"_blank\">Ahmet Esat Kara</a> tarafından dizayn\n"
+"                edilmiştir."
+msgstr ""
+"This website designed by\n"
+"                <a class=\"home-a-link\" href=\"http://www.ahmetesatkara.com"
+"\">Ahmet Esat Kara</a> for Haci Kara."
+
+#: templates/base.html:166 templates/terms_and_conditions.html:12
 msgid "Şartlar Ve Koşullar"
 msgstr "Terms and Conditions"
 
-#: templates/base.html:152
+#: templates/base.html:169
 msgid "Site Haritası"
 msgstr "Site Map"
 
@@ -273,19 +292,19 @@ msgstr "Page Count:"
 msgid "Kitap Adı:"
 msgstr "Book Name:"
 
-#: templates/contact.html:24
+#: templates/contact.html:37
 msgid "Ad - Soyad:"
 msgstr "Name - Surname:"
 
-#: templates/contact.html:32
+#: templates/contact.html:45
 msgid "Email Adresi:"
 msgstr "Email Address:"
 
-#: templates/contact.html:39
+#: templates/contact.html:52
 msgid "Mesaj:"
 msgstr "Message:"
 
-#: templates/contact.html:47
+#: templates/contact.html:60
 msgid "Gönder"
 msgstr "Send"
 
@@ -348,20 +367,14 @@ msgid "Makale Sahibi:"
 msgstr "Article Owner:"
 
 #: templates/thesis_jury_membership.html:44
-#, fuzzy
-#| msgid "Makale Sahibi:"
 msgid "Tez Sahibi:"
 msgstr "Article Owner:"
 
 #: templates/thesis_jury_membership.html:47
-#, fuzzy
-#| msgid "Makale Adı:"
 msgid "Tez Adı:"
 msgstr "Article Name:"
 
 #: templates/thesis_jury_membership.html:53
-#, fuzzy
-#| msgid "Makale Türü:"
 msgid "Tez Türü:"
 msgstr "Article Type:"
 

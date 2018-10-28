@@ -19,10 +19,6 @@ class ContentLanguageAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Content_Language,ContentLanguageAdmin)
 
-class Publication_TypeAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Publication_Type, Publication_TypeAdmin)
-
 class AboutAdmin(admin.ModelAdmin):
     pass
 admin.site.register(About,AboutAdmin)
@@ -79,7 +75,7 @@ class BookAdmin(admin.ModelAdmin):
         return "%s" % (obj.name_bsc)
 
     def _year(self,obj):
-        return obj.book.pub_year.year
+        return obj.pub_year.year
 
     _name.short_description = 'BOOK NAME'
     _year.short_description = 'PUBLICATION YEAR'
@@ -117,7 +113,7 @@ class CourseAdmin(admin.ModelAdmin):
         return "%s" % (obj.name_bsc)
 
     def _year(self,obj):
-        return obj.course.year.year
+        return obj.year.year
 
     _name.short_description = 'COURSE NAME'
     _year.short_description = 'COURSE YEAR'
@@ -180,7 +176,7 @@ class ThesisJuryMembershipTranslationAdmin(admin.ModelAdmin):
         return "%s" % (obj.name)
 
     _name.short_description = 'THESIS NAME'
-admin.site.register(Thesis_Jury_Membership, SupervisedThesisTranslationAdmin)
+admin.site.register(Thesis_Jury_Membership, ThesisJuryMembershipTranslationAdmin)
 
 class ResearchInterestAdmin(admin.ModelAdmin):
     pass
