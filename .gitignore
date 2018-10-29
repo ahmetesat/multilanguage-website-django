@@ -4,10 +4,14 @@ __pycache__
 
 multilanguage-website-django/settings/development.py
 multilanguage-website-django/settings/production.py
+multilanguage-website-django/settings/production.py.save
+multilanguage-website-django/settings/production.py.swo
+
 
 venv/
 media/
 static/ckeditor
+staticfiles/
 migrations/
 *.sqlite3
 
