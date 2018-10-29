@@ -10,7 +10,6 @@ media/
 static/ckeditor
 migrations/
 *.sqlite3
-*.mo
 
 # Common IDE's
 .idea
