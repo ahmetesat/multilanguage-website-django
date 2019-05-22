@@ -15,7 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'hk',
     'ckeditor',
-    'django_cleanup'
+    'django_cleanup',
+    'taggit'
 ]
 
 MIDDLEWARE = [
@@ -111,5 +112,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+# file permissions for newly uploaded files
+FILE_UPLOAD_PERMISSIONS = 0o640
 
 # CKEDITOR_BASEPATH = os.path.join(BASE_DIR, 'translations'),

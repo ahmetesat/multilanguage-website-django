@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-28 10:59+0000\n"
+"POT-Creation-Date: 2019-05-22 19:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,11 @@ msgstr "Your mail was successfully sent!"
 msgid "Tüm alanların doğru doldurulduğundan emin olun!"
 msgstr "Be sure that boxes filled correctly!"
 
-#: multilanguage-website-django/settings/base.py:86
+#: multilanguage-website-django/settings/base.py:81
 msgid "Turkish"
 msgstr ""
 
-#: multilanguage-website-django/settings/base.py:87
+#: multilanguage-website-django/settings/base.py:82
 msgid "English"
 msgstr ""
 
@@ -262,8 +262,8 @@ msgid "İletişim"
 msgstr "Contact"
 
 #: templates/base.html:142
-msgid "Hacı Kara'nın kişisel websitesine hoş geldiniz"
-msgstr "Welcome to the personal website of Haci Kara"
+msgid "Doç. Dr. Hacı Kara'nın kişisel websitesine hoş geldiniz"
+msgstr "Welcome to the personal website of Assoc. Prof. Dr. Hacı Kara"
 
 #: templates/base.html:163
 msgid ""
