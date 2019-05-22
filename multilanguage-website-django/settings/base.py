@@ -113,7 +113,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # file permissions for newly uploaded files
 FILE_UPLOAD_PERMISSIONS = 0o640
-#To display the media content over 2 mb
-FILE_UPLOAD_MAX_MEMORY_SIZE=10485760
 
 # CKEDITOR_BASEPATH = os.path.join(BASE_DIR, 'translations'),
