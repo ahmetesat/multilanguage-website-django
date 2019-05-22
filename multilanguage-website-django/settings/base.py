@@ -15,8 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'hk',
     'ckeditor',
-    'django_cleanup',
-    'taggit'
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [
