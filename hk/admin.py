@@ -100,9 +100,20 @@ class BookTranslationAdmin(admin.ModelAdmin):
     _year.short_description = 'PUBLICATION YEAR'
 admin.site.register(Book_Translation, BookTranslationAdmin)
 
-# class InternetPublicationAdmin(admin.ModelAdmin):
-#     pass
-# admin.site.register(Internet_Publication, InternetPublicationAdmin)
+class InternetPublicationAdmin(admin.ModelAdmin):
+    list_display = ['_name', '_internet_article_date']
+    search_fields = ['name']
+    ordering = ['name', 'internet_article_date']
+
+    def _name(self, obj):
+        return "%s" % (obj.name)
+
+    def _internet_article_date(self, obj):
+        return obj.internet_article_date
+
+    _name.short_description = 'ARTICLE NAME'
+    _internet_article_date.short_description = 'PUBLICATION YEAR'
+admin.site.register(Internet_Publication, InternetPublicationAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['_name', '_year']

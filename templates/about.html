@@ -5,7 +5,11 @@
 {% block content %}
     <!-- Page Content -->
     <div class="container common-container">
-
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">{% trans "Ana Sayfa" %}</a>
+            </li>
+        </ol>
         <!-- Page Heading/Breadcrumbs -->
         <h3 class="my-4">{% trans "Hakkında" %}
         </h3>
@@ -28,8 +32,8 @@
                 <div class="col-lg-6 about_hk ">
                     <p>{{ foo.about_description | safe }}</p>
                     <br>
-                    {% if foo.about.pdf %}
-                        <a href="{{ foo.about.pdf.url }}">{% trans "CV'yi Görüntülemek İçin Tıklayınız" %}</a>
+                    {% if foo.pdf %}
+                        <a href="{{ foo.pdf.url }}">{% trans "CV'yi Görüntülemek İçin Tıklayınız" %}</a>
                     {% endif %}
                 </div>
             {% endfor %}

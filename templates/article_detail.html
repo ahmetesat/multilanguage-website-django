@@ -11,7 +11,6 @@
             </li>
             <li class="breadcrumb-item">
                 <a href="#" onclick="window.history.back()">{% trans "Geri" %}</a>
-
             </li>
         </ol>
         {% for publication_detail in publication_info_detail %}
@@ -123,14 +122,16 @@
                                         </td>
                                     </tr>
                                 {% endif %}
-                                <tr>
-                                    <th>
-                                        {% trans "Açıklama:" %}
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.article_abstract|safe }}
-                                    </td>
-                                </tr>
+                                {% if publication_detail.article_abstract %}
+                                    <tr>
+                                        <th>
+                                            {% trans "Açıklama:" %}
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.article_abstract|safe }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
                                 </tbody>
 
                             </table>

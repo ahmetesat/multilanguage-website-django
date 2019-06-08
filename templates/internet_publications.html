@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="div-base-navbar-section">
-                <a class="a-base-navbar-section current" href="{% url 'internet_publications' %}">
+                <a class="a-base-navbar-section current" href="{% url 'Internet_Publications' %}">
                     <span>{% trans "İnternet Yayınları" %}</span>
                 </a>
             </div>
@@ -28,17 +28,34 @@
     <div class="container">
         <h3 class="my-4">{% trans "İnternet Yayınları" %}</h3>
         <div class="row">
-            <div class="col-12">
-                    <ul class="citation-list body1-table">
-                        {% for internet_pub in publication_info %}
-                        <li class="publication-list-item detail-link">
-                            <a href="{% url 'internet_publication_detail' internet_pub.pk internet_pub.name %}">
+        <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="header1-table">
+                    <tr>
+                        <th>
+                            {% trans "Yayın Adı:" %}
+                        </th>
+                        <th>
+                            {% trans "Yayın Tarihi:" %}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="body1-table">
+                    {% for internet_pub in publication_info%}
+                        <tr>
+                            <td class="detail-link">
+                                 <a href="{% url 'Internet_Publication_Detail' internet_pub.pk internet_pub.name %}">
                                 {{ internet_pub.name }}
                             </a>
-                            - {{ internet_pub.internet_article_date|date:"M Y" }}
-                        </li>
+                            </td>
+                            <td>
+                                {{ internet_pub.internet_article_date|date:"M Y" }}
+
+                            </td>
+                        </tr>
                     {% endfor %}
-                    </ul>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

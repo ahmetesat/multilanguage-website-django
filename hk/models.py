@@ -62,12 +62,7 @@ class About(models.Model):
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='img/%Y/%m/%d', blank=True, help_text="Not Obligatory", )
 
-    pdf = models.FileField(upload_to='pdf/%Y/%m/%d',
-                           help_text="CV PDF (Not Obligatory)",
-                           verbose_name="PDF",
-                           blank=True,
-                           validators=[FileExtensionValidator(["pdf"])],
-                           max_length=250)
+
 
     def get_absolute_url(self):
         return reverse('About')
@@ -90,6 +85,12 @@ class About_Translation(models.Model):
     about_description = RichTextField(blank=True, null=True,
                                       help_text="About Description (Not Obligatory)",
                                       verbose_name="About Description")
+    pdf = models.FileField(upload_to='pdf/%Y/%m/%d',
+                           help_text="CV PDF (Not Obligatory)",
+                           verbose_name="PDF",
+                           blank=True,
+                           validators=[FileExtensionValidator(["pdf"])],
+                           max_length=250)
 
     def __str__(self):
         return "%s" % (self.about.name)  # In Admin Page see the name itself not as object

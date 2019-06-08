@@ -20,60 +20,28 @@
                         <div class="publicationHeadLine">
                             <h2>{{ publication_detail.name }}</h2>
                         </div>
+                        <div style="font-size:small">
+                            {{ publication_detail.author_names.all |join:", " }}
+                        </div>
+                        <div style="color: #808080;font-size:small">
+                            {{ publication_detail.internet_article_date | date:"M Y" }}
+                        </div>
                         <br>
-                        <div class="publicationInfo table-responsive">
-                            <table class="table table-borderless">
-                                <tbody>
-                                <tr>
-                                    <th>
-                                        {% trans "Yazar(lar):" %}
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.author_names.all |join:", " }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {% trans "Tarih:" %}
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.internet_article_date | date:"M Y" }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    {% if publication_detail.website_name %}
-
-                                        <th>
-                                            {% trans "Website Adı:" %}
-                                        </th>
-                                        <td>
-                                            {{ publication_detail.website_name }}
-                                        </td>
-                                    {% endif %}
-
-                                </tr>
-                                <tr>
-                                    {% if publication_detail.website_link %}
-                                        <th>
-                                            {% trans "Website Link:" %}
-                                        </th>
-                                        <td>
-                                            {{ publication_detail.website_link }}
-                                        </td>
-                                    {% endif %}
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        {% trans "Açıklama:" %}
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.article_content|safe }}
-                                    </td>
-                                </tr>
-                                </tbody>
-
-                            </table>
+                        <div>
+                            {% if publication_detail.article_content %}
+                                {{ publication_detail.article_content|safe }}
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div>
+                            {% if publication_detail.website_name %}
+                                {{ publication_detail.website_name }}
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if publication_detail.website_link %}
+                                <a target="_blank" href={{ publication_detail.website_link }}>{{ publication_detail.website_link }}</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

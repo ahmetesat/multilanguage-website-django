@@ -87,14 +87,16 @@
                                         </td>
                                     </tr>
                                 {% endif %}
-                                <tr>
-                                    <th>
-                                        {% trans "Açıklama:" %}
-                                    </th>
-                                    <td>
-                                        {{ publication_detail.book_abstract|safe }}
-                                    </td>
-                                </tr>
+                                {% if publication_detail.book_abstract %}
+                                    <tr>
+                                        <th>
+                                            {% trans "Açıklama:" %}
+                                        </th>
+                                        <td>
+                                            {{ publication_detail.book_abstract|safe }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
                                 </tbody>
 
                             </table>

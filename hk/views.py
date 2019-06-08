@@ -140,11 +140,10 @@ def book_detail(request, pk=None, book_name=None):  # Gets chosen article name a
 def internet_publications(request):
     try:
         if request.method == 'GET':
-            publication_info = Internet_Publication.objects.all()
+            publication_info = Internet_Publication.objects.all().order_by("internet_article_date")
 
             return render(request, "internet_publications.html",
                           {"publication_info": publication_info})
-
     except:
         pass
 

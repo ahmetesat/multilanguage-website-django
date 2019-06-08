@@ -43,6 +43,22 @@ class BookDetailSitemap(Sitemap):
     def load(self, obj):
         return obj.name
 
+class InternetPubDetailSitemap(Sitemap):
+    changefreq = "never"
+    priority = 1.0
+    i18n = True
+
+    def items(self):
+        current_lang_code = translation.get_language()
+        try:
+
+            return Book_Translation.objects\
+                .filter(website_language__language=current_lang_code)
+        except:
+            pass
+    def load(self, obj):
+        return obj.name
+
 class CourseDetailSitemap(Sitemap):
     changefreq = "never"
     priority = 1.0
