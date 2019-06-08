@@ -1,5 +1,6 @@
 {% extends "base_academic_life.html" %}
 {% load i18n %}
+{% load custom_tags %}
 
 {% block content %}
     {{ block.super }}
@@ -54,7 +55,7 @@
                     {% for course in academic_info %}
                         <tr>
                             <td class="detail-link">
-                                <a href="{% url 'Course_Detail' course.course course.name|slugify %}">{{ course.name }}</a>
+                                <a href="{% url 'Course_Detail' course.course course.name|slugify2 %}">{{ course.name }}</a>
                             </td>
                             <td>
                                 {{ course.institution }}

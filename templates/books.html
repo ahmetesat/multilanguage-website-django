@@ -1,5 +1,6 @@
 {% extends "base_publications.html" %}
 {% load i18n %}
+{% load custom_tags %}
 
 {% block content %}
     {{ block.super }}
@@ -49,7 +50,7 @@
                         <tr>
 
                             <td class="detail-link">
-                                <a href="{% url 'Book_Detail' book.book book.name|slugify %}">{{ book.name }}</a>
+                                <a href="{% url 'Book_Detail' book.book book.name|slugify2 %}">{{ book.name }}</a>
                             </td>
                             <td>
                                 {{ book.pub_year | date:"M Y" }}
