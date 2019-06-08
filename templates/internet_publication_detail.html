@@ -14,7 +14,7 @@
             </li>
         </ol>
         {% for publication_detail in publication_info_detail %}
-            <div class="row">
+            <div class="row" style="padding-bottom: 4%">
                 <div class="col-12">
                     <div class="publicationDetail">
                         <div class="publicationHeadLine">
@@ -33,7 +33,7 @@
                             {% endif %}
                         </div>
                         <br>
-                        <div>
+                        <div style="font-weight: bold">
                             {% if publication_detail.website_name %}
                                 {{ publication_detail.website_name }}
                             {% endif %}

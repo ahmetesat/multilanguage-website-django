@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from hk.models import *
-
+from hk.templatetags import custom_tags
 # class ArticleSitemap(Sitemap):
 #     changefreq = "monthly"
 #     priority = 1.0
@@ -11,10 +11,11 @@ from hk.models import *
 #
 #     def load(self,obj):
 #         return obj.name
+from hk.views import internet_publications
 
 
 class ArticleDetailSitemap(Sitemap):
-    changefreq = "never"
+    changefreq = "monthly"
     priority = 1.0
     i18n = True
 
@@ -44,16 +45,13 @@ class BookDetailSitemap(Sitemap):
         return obj.name
 
 class InternetPubDetailSitemap(Sitemap):
-    changefreq = "never"
+    changefreq = "monthly"
     priority = 1.0
     i18n = True
 
     def items(self):
-        current_lang_code = translation.get_language()
         try:
-
-            return Book_Translation.objects\
-                .filter(website_language__language=current_lang_code)
+            return Internet_Publication.objects.all()
         except:
             pass
     def load(self, obj):
@@ -86,7 +84,8 @@ class StaticSitemapHighImportance(Sitemap):
         return ['Articles',
                 'Books',
                 'Courses',
-                'Conferences']
+                'Conferences',
+                'Internet_Publications']
 
     def location(self, item):
         return reverse(item)
@@ -94,7 +93,7 @@ class StaticSitemapHighImportance(Sitemap):
 
 class StaticSitemapMiddleImportance(Sitemap):
     """Reverse 'static' views for XML sitemap."""
-    changefreq = "yearly"
+    changefreq = "monthly"
     priority = 0.5
     i18n = True
 

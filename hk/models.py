@@ -5,6 +5,7 @@ from django.core.validators import FileExtensionValidator
 import datetime
 
 from ckeditor.fields import RichTextField
+from hk.templatetags import custom_tags
 
 selected_language = translation.get_language()
 
@@ -55,14 +56,13 @@ class Content_Language(models.Model):  # Exp. tr, en ..
         verbose_name = "Content Language"
         verbose_name_plural = "Content Languages"
 
+
 class About(models.Model):
     name = models.CharField(max_length=10, default='Hacı Kara', unique=True)
     section = models.ForeignKey(All_Navbar_Sections,
                                 verbose_name="Navbar Section*",
                                 on_delete=models.CASCADE)
     image = models.ImageField(upload_to='img/%Y/%m/%d', blank=True, help_text="Not Obligatory", )
-
-
 
     def get_absolute_url(self):
         return reverse('About')
@@ -193,7 +193,8 @@ class Article_Translation(models.Model):
         verbose_name_plural = "Articles Details"
 
     def get_absolute_url(self):
-        return reverse('Article_Detail', kwargs={'pk': self.article.pk, 'article_name': self.name})
+        return reverse('Article_Detail',
+                       kwargs={'pk': self.article.pk, 'article_name': custom_tags.slugify2(self.name)})
 
 
 class Book(models.Model):
@@ -267,7 +268,7 @@ class Book_Translation(models.Model):
         verbose_name_plural = "Books Details"
 
     def get_absolute_url(self):
-        return reverse('Book_Detail', kwargs={'pk': self.book.pk, 'book_name': self.name})
+        return reverse('Book_Detail', kwargs={'pk': self.book.pk, 'book_name': custom_tags.slugify2(self.name)})
 
 
 class Course(models.Model):
@@ -357,7 +358,7 @@ class Course_Translation(models.Model):
         verbose_name_plural = "Courses Details"
 
     def get_absolute_url(self):
-        return reverse('Course_Detail', kwargs={'pk': self.course.pk, 'course_name': self.name})
+        return reverse('Course_Detail', kwargs={'pk': self.course.pk, 'course_name': custom_tags.slugify2(self.name)})
 
 
 class Conference(models.Model):
@@ -418,6 +419,11 @@ class Internet_Publication(models.Model):
     class Meta:
         verbose_name = "Internet Publication"
         verbose_name_plural = "Internet Publications"
+
+    def get_absolute_url(self):
+        # NOT: Internet_Publication_Detail should be same in url. This is important for sitemap
+        return reverse('Internet_Publication_Detail',
+                       kwargs={'pk': self.pk, 'internet_pub_artic_name': custom_tags.slugify2(self.name)})
 
 
 class Supervised_Thesis(models.Model):

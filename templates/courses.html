@@ -54,7 +54,7 @@
                     {% for course in academic_info %}
                         <tr>
                             <td class="detail-link">
-                                <a href="{% url 'Course_Detail' course.course course.name %}">{{ course.name }}</a>
+                                <a href="{% url 'Course_Detail' course.course course.name|slugify %}">{{ course.name }}</a>
                             </td>
                             <td>
                                 {{ course.institution }}

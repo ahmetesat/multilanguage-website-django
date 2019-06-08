@@ -1,5 +1,6 @@
 {% extends "base_publications.html" %}
 {% load i18n %}
+{% load custom_tags %}
 
 {% block content %}
     {{ block.super }}
@@ -44,8 +45,9 @@
                     {% for internet_pub in publication_info%}
                         <tr>
                             <td class="detail-link">
-                                 <a href="{% url 'Internet_Publication_Detail' internet_pub.pk internet_pub.name %}">
+                                 <a href="{% url 'Internet_Publication_Detail' internet_pub.pk internet_pub.name|slugify2 %}">
                                 {{ internet_pub.name }}
+
                             </a>
                             </td>
                             <td>

@@ -48,7 +48,7 @@
                         <tbody class="body1-table">
                         <tr>
                             <td class="detail-link">
-                                <a href="{% url 'Article_Detail' makale.pk makale.name %}">{{ makale.name }}</a>
+                                <a href="{% url 'Article_Detail' makale.pk makale.name|slugify %}">{{ makale.name }}</a>
                             </td>
                             <td>
                                 {{ makale.pub_year | date:"M Y" }}

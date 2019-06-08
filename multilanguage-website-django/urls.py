@@ -42,52 +42,52 @@ sitemaps = {
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^(?P<filename>(robots.txt)|(humans.txt))$',
+    re_path(r'^(?P<filename>(robots.txt)|(humans.txt))$',
         home_files, name='home-files')
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^sitemap.xml/', sitemap, {'sitemaps': sitemaps},
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
+    re_path(r'^sitemap.xml/', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^admin/',
+    re_path(r'^admin/',
         admin.site.urls),
 
-    url(r'^$',
+    re_path(r'^$',
         home_page, name="home"),
-    url(_(r'^hakkinda/$'),
+    re_path(_(r'^hakkinda/$'),
         about_page, name="About"),
 
-    url(_(r'^yayinlar/makaleler/$'),
+    re_path(_(r'^yayinlar/makaleler/$'),
         article_page, name="Articles"),
-    url(_(r'^yayinlar/makaleler/detay/(?P<pk>\d+)/(?P<article_name>[\w\s]+)/$'),
+    re_path(_(r'^yayinlar/makaleler/detay/(?P<pk>\d+)/(?P<article_name>[\w\s-]+)/$'),
         article_detail,name="Article_Detail"),
-    url(_(r'^yayinlar/kitaplar/$'),
+    re_path(_(r'^yayinlar/kitaplar/$'),
         book_page, name="Books"),
-    url(_(r'^yayinlar/kitaplar/detay/(?P<pk>\d+)/(?P<book_name>[\w\s]+)/$'),
+    re_path(_(r'^yayinlar/kitaplar/detay/(?P<pk>\d+)/(?P<book_name>[\w\s-]+)/$'),
         book_detail, name="Book_Detail"),
-    url(_(r'^yayinlar/internet-yayinlari/$'),
+    re_path(_(r'^yayinlar/internet-yayinlari/$'),
         internet_publications, name="Internet_Publications"),
-    url(_(r'^yayinlar/internet-yayinlari/detay/(?P<pk>\d+)/(?P<internet_pub_artic_name>[\w\s]+)/$'),
+    re_path(_(r'^yayinlar/internet-yayinlari/detay/(?P<pk>\d+)/(?P<internet_pub_artic_name>[\w\s-]+)/$'),
         internet_publication_detail, name="Internet_Publication_Detail"),
 
-    url(_(r'^akademik/kurslar/$'),
+    re_path(_(r'^akademik/kurslar/$'),
         course_page, name="Courses"),
-    url(_(r'^akademik/kurslar/detay/(?P<pk>\d+)/(?P<course_name>[\w\s]+)/$'),
+    re_path(_(r'^akademik/kurslar/detay/(?P<pk>\d+)/(?P<course_name>[\w\s-]+)/$'),
         course_detail, name="Course_Detail"),
-    url(_(r'^akademik/konferanslar/$'),
+    re_path(_(r'^akademik/konferanslar/$'),
         conference_page, name="Conferences"),
-    url(_(r'^akademik/tez-danismanligi/$'),
+    re_path(_(r'^akademik/tez-danismanligi/$'),
         supervised_thesis_page, name="Supervised_Thesis"),
-    url(_(r'^akademik/tez-juri-uyeligi/$'),
+    re_path(_(r'^akademik/tez-juri-uyeligi/$'),
         thesis_jury_membership_page, name="Thesis_Jury_Membership"),
 
-    url(_(r'^arastirma-alanlari/$'), research_interest_detail, name="research_interest_detail"),
+    re_path(_(r'^arastirma-alanlari/$'), research_interest_detail, name="research_interest_detail"),
 
-    url(_(r'^iletisim/$'), contact, name="Contact"),
-    url(_(r'^iletisim-mail-gonder/$'), contact_send_email, name="contact_send_email"),
+    re_path(_(r'^iletisim/$'), contact, name="Contact"),
+    re_path(_(r'^iletisim-mail-gonder/$'), contact_send_email, name="contact_send_email"),
 
-    url(_(r'^sartlar-ve-kasullar/$'), terms_and_conditions, name="terms-and-conditions")
+    re_path(_(r'^sartlar-ve-kasullar/$'), terms_and_conditions, name="terms-and-conditions")
 
 )
 
