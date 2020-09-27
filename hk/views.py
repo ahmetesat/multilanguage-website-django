@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage, BadHeaderError
 from django.utils.translation import ugettext as _
@@ -16,19 +16,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 logger = logging.getLogger(__name__)
 
 
-def error_handler403(request, exception, template_name='403.html'):
+def error_handler403(request,exception):
     response = render(request, "403.html", {})
     response.status_code = 403
     return response
 
 
-def error_handler404(request, exception, template_name='404.html'):
+def error_handler404(request,exception):
     response = render(request, "404.html", {})
     response.status_code = 404
     return response
 
 
-def error_handler500(request, exception, template_name='404.html'):
+def error_handler500(request):
     response = render(request, "500.html", {})
     response.status_code = 500
     return response

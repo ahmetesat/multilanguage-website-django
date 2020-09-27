@@ -99,3 +99,5 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
     ]
+admin.autodiscover()
+admin.site.enable_nav_sidebar = False
